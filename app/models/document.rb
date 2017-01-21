@@ -1,4 +1,22 @@
 class Document < ApplicationRecord
-  has_attached_file :file
-  validates_attachment_content_type :file, content_type: /\Aimage\/.*\z/
+
+  has_many :document_tags
+  has_many :tags, through: :document_tags
+
+  has_attached_file :file, {
+    url: "/system/:hash.:extension",
+    hash_secret: "yxeuriffeuhhvqzzqvchvavjgftjuoahrgbotbuxflkqvekffg"
+  }
+
+  validates :name, uniqueness: true
+  validates :slug, uniqueness: true
+
+  validates_attachment_content_type :file, content_type: /application\/pdf/
+
+  before_save :create_slug
+
+  def create_slug
+    self.slug ||= name.parameterize
+  end
+
 end

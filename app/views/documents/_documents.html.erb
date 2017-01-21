@@ -1,0 +1,7 @@
+<% if @documents.any? %>
+  <ul>
+    <% @documents.each do |document| %>
+      <li><%= link_to document.name, document_path(document) %></li>
+    <% end %>
+  </ul>
+<% end %>

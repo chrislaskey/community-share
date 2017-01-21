@@ -1,7 +1,19 @@
 <h1>Document</h1>
 
-<p>Name</p>
+<p><strong>Name</strong></p>
 <%= @document.name %>
 
-<p>File</p>
-<%= image_tag @document.file.url %>
+<p><strong>Tags</strong></p>
+<% if @document.tags.present? %>
+  <ul>
+    <% @document.tags.map do |tag| %>
+      <li><%= link_to tag.name, tag_path(tag) %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p><strong>File</strong></p>
+
+<p><%= link_to "#{@document.name.parameterize}.pdf", @document.file.url %></p>
+
+<p><%= link_to "Back", :back %></p>

@@ -5,6 +5,11 @@
   </p>
 
   <p>
+    <%= form.label :tags %><br>
+    <%= form.text_field :tags, value: @document.tags.join(", ") %>
+  </p>
+
+  <p>
     <%= form.label :file %><br>
     <%= form.file_field :file %>
   </p>
@@ -13,3 +18,5 @@
     <%= form.submit %>
   </p>
 <% end %>
+
+<%= link_to "Back", :back %>

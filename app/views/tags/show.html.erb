@@ -1,0 +1,13 @@
+<h1>Tag <%= @tag.name %></h1>
+
+<%= link_to "All Documents", documents_path %>
+
+<h3>Related Documents</h3>
+
+<%= render "documents/documents" %>
+
+<p>
+  <%= link_to "Back", :back %>
+  |
+  <%= link_to "All Tags", tags_path %>
+</p>

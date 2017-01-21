@@ -13,17 +13,32 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    @document = Document.new(permitted_params)
+    attributes = permitted_params
+    tags = attributes.delete(:tags)
 
-    @document.save
+    @document = Document.new(attributes)
 
-    redirect_to @document
+    associate_tags(tags)
+
+    if @document.save
+      redirect_to @document
+    else
+      render 'new'
+    end
   end
 
   private
 
   def permitted_params
-    params.require(:document).permit(:file, :name)
+    params.require(:document).permit(:file, :name, :tags)
+  end
+
+  def associate_tags(tags)
+    @document.tags = tags.split(",").map(&:strip).map do |name|
+      Tag.find_or_initialize_by(slug: name.parameterize).tap do |tag|
+        tag.name ||= name
+      end
+    end
   end
 
 end
