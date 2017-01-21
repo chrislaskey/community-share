@@ -1,0 +1,9 @@
+<h1>Documents</h1>
+
+<% if @documents.any? %>
+  <ul>
+    <% @documents.each do |document| %>
+      <li><%= document.name %></li>
+    <% end %>
+  </ul>
+<% end %>
