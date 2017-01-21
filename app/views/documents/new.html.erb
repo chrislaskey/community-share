@@ -1,10 +1,15 @@
-<%= form_for :document, url: documents_path do |f| %>
+<%= form_for @document, url: documents_path, html: { multipart: true } do |form| %>
   <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
   </p>
 
   <p>
-    <%= f.submit %>
+    <%= form.label :file %><br>
+    <%= form.file_field :file %>
+  </p>
+
+  <p>
+    <%= form.submit %>
   </p>
 <% end %>

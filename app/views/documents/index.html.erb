@@ -3,7 +3,7 @@
 <% if @documents.any? %>
   <ul>
     <% @documents.each do |document| %>
-      <li><%= document.name %></li>
+      <li><%= link_to document.name, document_path(document) %></li>
     <% end %>
   </ul>
 <% end %>
