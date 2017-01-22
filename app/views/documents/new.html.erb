@@ -5,14 +5,19 @@
   </p>
 
   <p>
-    <%= form.label :tags %><br>
-    <%= form.text_field :tags, value: @document.tags.join(", ") %>
-  </p>
-
-  <p>
     <%= form.label :file %><br>
     <%= form.file_field :file %>
   </p>
+
+  <% @tags.group_by(&:category).map do |category, items| %>
+    <h3><%= category %></h3>
+    <% items.map do |tag| %>
+      <p>
+        <%= form.label tag.name %><br>
+        <%= form.check_box :tag_ids, {multiple: true}, tag.id, nil %>
+      </p>
+    <% end %>
+  <% end %>
 
   <p>
     <%= form.submit %>

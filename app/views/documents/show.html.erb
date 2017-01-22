@@ -3,13 +3,16 @@
 <p><strong>Name</strong></p>
 <%= @document.name %>
 
-<p><strong>Tags</strong></p>
 <% if @document.tags.present? %>
-  <ul>
-    <% @document.tags.map do |tag| %>
-      <li><%= link_to tag.name, tag_path(tag) %></li>
+  <p>
+    <% @document.tags.group_by(&:category).map do |category, items| %>
+      <strong><%= category %>: </strong>
+        <% items.map do |tag| %>
+          <span><%= link_to tag.name, tag_path(tag) %></span>
+        <% end %>
+      </strong>
     <% end %>
-  </ul>
+  </p>
 <% end %>
 
 <p><strong>File</strong></p>
