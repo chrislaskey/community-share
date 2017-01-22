@@ -7,11 +7,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <link rel="stylesheet" media="all" href="/assets/css/uikit.min.css" />
+    <link rel="stylesheet" media="all" href="/assets/css/uikit.css" />
+    <link rel="stylesheet" media="all" href="/assets/css/theme.css" />
     <script src="/assets/js/uikit.min.js"></script>
   </head>
 
   <body>
+    <%= render "layouts/header" %>
     <%= yield %>
   </body>
 </html>
