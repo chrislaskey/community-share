@@ -1,22 +1,29 @@
-<%= form_for @document, url: documents_path, html: { multipart: true } do |form| %>
-  <p>
-    <%= form.label :name %><br>
-    <%= form.text_field :name %>
-  </p>
+<h1 class="uk-h1">New Document</h1>
 
-  <p>
-    <%= form.label :tags %><br>
-    <%= form.text_field :tags, value: @document.tags.join(", ") %>
-  </p>
+<%= form_for @document, url: documents_path, html: { class: "uk-form-stacked", multipart: true } do |form| %>
 
-  <p>
-    <%= form.label :file %><br>
-    <%= form.file_field :file %>
-  </p>
+ 	<div>
+    <%= form.label :name, class: "uk-form-label" %>
+    <div class="uk-form-controls">
+    	<%= form.text_field :name %>
+		</div>
+	</div>
 
-  <p>
-    <%= form.submit %>
-  </p>
+ 	<div>
+    <%= form.label :tags, class: "uk-form-label" %>
+    <div class="uk-form-controls">
+    	<%= form.text_field :tags, value: @document.tags.join(", ") %>
+		</div>
+	</div>
+
+ 	<div>
+    <%= form.label :file, class: "uk-form-label" %>
+    <div class="uk-form-controls">
+    	<%= form.file_field :file %>
+		</div>
+	</div>
+
+  <%= form.submit "submit", class: "uk-button uk-button-default" %>
 <% end %>
 
 <%= link_to "Back", :back %>
