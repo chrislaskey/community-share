@@ -1,7 +1,12 @@
-<% if @documents.any? %>
+<% documents ||= @documents %>
+
+<% if documents.any? %>
   <ul>
-    <% @documents.each do |document| %>
-      <li><%= link_to document.name, document_path(document) %></li>
+    <% documents.each do |document| %>
+      <li>
+        <h3><%= link_to document.name, document_path(document) %></h3>
+        <%= render "documents/document_tags", document: document %>
+      </li>
     <% end %>
   </ul>
 <% end %>

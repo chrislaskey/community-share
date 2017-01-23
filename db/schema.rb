@@ -33,10 +33,12 @@ ActiveRecord::Schema.define(version: 20170121204417) do
   end
 
   create_table "tags", force: :cascade do |t|
+    t.string   "category"
+    t.string   "category_slug"
     t.string   "name"
     t.string   "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

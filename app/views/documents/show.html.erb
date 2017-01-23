@@ -1,19 +1,24 @@
 <h1>Document</h1>
 
+<%= link_to "Edit Document", edit_document_path(@document) %>
+
+<%= link_to "Destroy Document", document_path(@document), method: :delete, data: { confirm: "Are you sure?" } %>
+
 <p><strong>Name</strong></p>
 <%= @document.name %>
 
-<p><strong>Tags</strong></p>
 <% if @document.tags.present? %>
-  <ul>
-    <% @document.tags.map do |tag| %>
-      <li><%= link_to tag.name, tag_path(tag) %></li>
+  <p>
+    <% @document.tags.group_by(&:category).map do |category, items| %>
+      <strong><%= category %>: </strong>
+        <% items.map do |tag| %>
+          <span><%= link_to tag.name, tag_path(tag) %></span>
+        <% end %>
+      </strong>
     <% end %>
-  </ul>
+  </p>
 <% end %>
 
 <p><strong>File</strong></p>
 
 <p><%= link_to "#{@document.name.parameterize}.pdf", @document.file.url %></p>
-
-<p><%= link_to "Back", :back %></p>

@@ -1,0 +1,30 @@
+<%= form_for @document, html: { multipart: true } do |form| %>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :file %><br>
+    <%= form.file_field :file %>
+    <% if @document.file.present? %>
+      <%= link_to "#{@document.name.parameterize}.pdf", @document.file.url %>
+    <% end %>
+  </p>
+
+  <% @tags.group_by(&:category).map do |category, items| %>
+    <h3><%= category %></h3>
+    <% items.map do |tag| %>
+      <p>
+        <%= form.label tag.name %><br>
+        <%= form.check_box :tag_ids, {multiple: true}, tag.id, nil %>
+      </p>
+    <% end %>
+  <% end %>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>
