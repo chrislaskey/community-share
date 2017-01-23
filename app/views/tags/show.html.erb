@@ -1,13 +1,13 @@
 <h1>Tag <%= @tag.name %></h1>
 
-<%= link_to "All Documents", documents_path %>
+<%= link_to "Related Documents (#{@tag.documents.count})", document_tag_path(@tag) %>
 
-<h3>Related Documents</h3>
+<%= link_to "Edit Tag", edit_tag_path(@tag) %>
 
-<%= render "documents/documents" %>
+<%= link_to "Destroy Tag", tag_path(@tag), method: :delete, data: { confirm: "Are you sure?" } %>
 
-<p>
-  <%= link_to "Back", :back %>
-  |
-  <%= link_to "All Tags", tags_path %>
-</p>
+<p><strong>Category</strong></p>
+<%= @tag.category %>
+
+<p><strong>Name</strong></p>
+<%= @tag.name %>

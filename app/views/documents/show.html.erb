@@ -1,5 +1,9 @@
 <h1>Document</h1>
 
+<%= link_to "Edit Document", edit_document_path(@document) %>
+
+<%= link_to "Destroy Document", document_path(@document), method: :delete, data: { confirm: "Are you sure?" } %>
+
 <p><strong>Name</strong></p>
 <%= @document.name %>
 
@@ -18,5 +22,3 @@
 <p><strong>File</strong></p>
 
 <p><%= link_to "#{@document.name.parameterize}.pdf", @document.file.url %></p>
-
-<p><%= link_to "Back", :back %></p>

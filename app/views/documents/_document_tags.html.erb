@@ -3,7 +3,7 @@
     <% document.tags.group_by(&:category).map do |category, items| %>
       <strong><%= category %>: </strong>
         <% items.map do |tag| %>
-          <span><%= link_to tag.name, tag_path(tag) %></span>
+          <span><%= link_to tag.name, document_tag_path(tag) %></span>
         <% end %>
       </strong>
     <% end %>
