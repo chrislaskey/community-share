@@ -4,6 +4,7 @@ class DocumentsController < ApplicationController
 
   def index
     @documents = Document.all
+    @tags = Tag.all
   end
 
   def show

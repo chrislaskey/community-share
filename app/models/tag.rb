@@ -12,4 +12,8 @@ class Tag < ApplicationRecord
   def create_slug
     self.slug = name.parameterize
   end
+
+  def size
+    documents.count
+  end
 end

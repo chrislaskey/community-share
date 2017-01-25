@@ -18,6 +18,27 @@ h1, h2, h3, h4, h5 {
   font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
+.page-header {
+  align-self: stretch;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 15px;
+}
+
+.page-body {
+  margin: 45px 30px 30px 30px;
+}
+
+.page-main {
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-content {
+  width: 100%;
+}
+
 .page-lead {
   display: flex;
   justify-content: flex-start;
@@ -44,5 +65,34 @@ h1, h2, h3, h4, h5 {
       margin-left: 0px;
     }
   }
+}
 
+.page-sidebar {
+  margin-left: 60px;
+  width: 320px;
+
+  .sidebar-link {
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+
+    .uk-badge {
+      background: #5fa8f3;
+    }
+
+    &:hover {
+      color: #666;
+      text-decoration: none;
+
+      .uk-badge {
+        background: #1e87f0;
+      }
+    }
+  }
+}
+
+.page-footer {
+  background: #181818;
+  height: 200px;
+  padding: 60px 30px;
 }
