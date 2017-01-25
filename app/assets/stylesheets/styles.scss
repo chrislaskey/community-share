@@ -81,8 +81,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .page-sidebar {
-  background: #1e87f0;
-  color: #fff;
+  background: #f4f4f4;
   font-size: 0.875rem;
   margin-left: 60px;
   min-width: 200px;
@@ -92,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 30%;
 
   &:after { // Corner
-    border-left: 19px solid rgba(0, 0, 0, 0.15);
+    border-left: 19px solid rgba(0, 0, 0, 0.1);
     border-top: 19px solid #fff;
     content: "";
     height: 0;
@@ -104,12 +103,10 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   h4 {
-    color: #fff;
     margin-top: 0;
   }
 
   li {
-    color: #fff;
     margin-left: 15px;
     margin-right: 15px;
   }
@@ -119,14 +116,14 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   a {
-    color: #fff;
+    color: #333;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     .size {
-      background: rgba(0, 0, 0, 0.1);
-      color: rgba(255, 255, 255, 0.8);
+      background: rgba(0, 0, 0, 0.05);
+      color: rgba(0, 0, 0, 0.4);
       font-size: 0.625rem;
       font-weight: 600;
       padding: 2px 0px;
@@ -135,11 +132,12 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     &:hover {
+      color: #1e87f0;
       text-decoration: none;
 
       .size {
-        color: #fff;
-        background: rgba(0, 0, 0, 0.3);
+        color: #1e87f0;
+        background: none;
       }
     }
   }
