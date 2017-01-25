@@ -2,16 +2,16 @@
 
   <p>
     <%= form.label :category %><br>
-    <%= form.text_field :category %>
+    <%= form.text_field :category, class: "uk-input" %>
   </p>
 
   <p>
     <%= form.label :name %><br>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "uk-input"  %>
   </p>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit class: "uk-button uk-button-default" %>
   </p>
 
 <% end %>

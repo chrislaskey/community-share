@@ -1,8 +1,18 @@
-<h1>Document</h1>
-
-<%= link_to "Edit Document", edit_document_path(@document) %>
-
-<%= link_to "Destroy Document", document_path(@document), method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="page-lead">
+  <div class="page-heading">
+    <h1>Document</h1>
+  </div>
+  <div class="page-actions">
+    <a href="<%= edit_document_path(@document) %>" class="uk-button uk-button-link">
+      <span uk-icon="icon: file-edit"></span>
+      Edit
+    </a>
+    <a href="<%= document_path(@document) %>" data-confirm="Are you sure?" data-method="delete" class="uk-button uk-button-link">
+      <span uk-icon="icon: trash"></span>
+      Delete
+    </a>
+  </div>
+</div>
 
 <p><strong>Name</strong></p>
 <%= @document.name %>
@@ -12,7 +22,7 @@
     <% @document.tags.group_by(&:category).map do |category, items| %>
       <strong><%= category %>: </strong>
         <% items.map do |tag| %>
-          <span><%= link_to tag.name, tag_path(tag) %></span>
+          <span><%= link_to tag.name, document_tag_path(tag) %></span>
         <% end %>
       </strong>
     <% end %>

@@ -2,29 +2,32 @@
 
   <p>
     <%= form.label :name %><br>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "uk-input" %>
   </p>
 
-  <p>
+  <div>
     <%= form.label :file %><br>
-    <%= form.file_field :file %>
-    <% if @document.file.present? %>
-      <%= link_to "#{@document.name.parameterize}.pdf", @document.file.url %>
-    <% end %>
-  </p>
+    <div class="uk-form-custom" uk-form-custom>
+      <%= form.file_field :file %>
+      <% if @document.file.present? %>
+        <p><%= link_to "#{@document.name.parameterize}.pdf", @document.file.url %></p>
+      <% end %>
+      <button class="uk-button uk-button-default" type="button" tabindex="-1">Select File</button>
+    </div>
+  </div>
 
   <% @tags.group_by(&:category).map do |category, items| %>
-    <h3><%= category %></h3>
+    <h5><%= category %></h5>
     <% items.map do |tag| %>
-      <p>
-        <%= form.label tag.name %><br>
-        <%= form.check_box :tag_ids, {multiple: true}, tag.id, nil %>
-      </p>
+      <label for="tag-<%= tag.id %>">
+        <%= form.check_box :tag_ids, {class: "uk-checkbox", id: "tag-#{tag.id}", multiple: true}, tag.id, nil %>
+        <%= tag.name %>
+      </label>
     <% end %>
   <% end %>
 
   <p>
-    <%= form.submit %>
+    <%= form.submit class: "uk-button uk-button-default" %>
   </p>
 
 <% end %>

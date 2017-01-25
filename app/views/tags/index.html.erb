@@ -1,5 +1,13 @@
-<h1>Tags</h1>
-
-<%= link_to "New Tag", new_tag_path %>
+<div class="page-lead">
+  <div class="page-heading">
+    <h1>Tags</h1>
+  </div>
+  <div class="page-actions">
+    <a href="<%= new_tag_path %>" class="uk-button uk-button-link">
+      <span uk-icon="icon: plus"></span>
+      New
+    </a>
+  </div>
+</div>
 
 <%= render "tags/tags" %>

@@ -1,5 +1,13 @@
-<h1>Documents</h1>
-
-<%= link_to "New Document", new_document_path %>
+<div class="page-lead">
+  <div class="page-heading">
+    <h1>Documents</h1>
+  </div>
+  <div class="page-actions">
+    <a href="<%= new_document_path %>" class="uk-button uk-button-link">
+      <span uk-icon="icon: plus"></span>
+      New
+    </a>
+  </div>
+</div>
 
 <%= render "documents/documents" %>
