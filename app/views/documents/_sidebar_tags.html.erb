@@ -1,17 +1,17 @@
 <% tags ||= @tags %>
 
 <% if tags.present? %>
-  <div class="page-sidebar">
+  <div class="page-sidebar sidebar-tags">
     <% tags.group_by(&:category).sort.map do |category, items| %>
       <h4><%= category %></h4>
       <% if items.present? %>
         <ul class="uk-list">
           <% items.sort_by(&:name).map do |tag| %>
             <li>
-              <a class="sidebar-link" href="<%= document_tag_path(tag) %>">
+              <a href="<%= document_tag_path(tag) %>">
                 <span><%= tag.name %></span>
                 <%# <span class="uk-badge"><%= tag.size %1></span> %>
-                <span><%= tag.size %></span>
+                <span class="size"><%= tag.size %></span>
               </a>
             </li>
           <% end %>
