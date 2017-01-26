@@ -18,8 +18,10 @@ class TagsController < ApplicationController
     @tag = Tag.new(permitted_params)
 
     if @tag.save
+      flash[:success] = ["Successfully created #{@tag.name}"]
       redirect_to @tag
     else
+      flash[:error] = @tag.errors.full_messages
       render "new"
     end
   end
@@ -30,8 +32,10 @@ class TagsController < ApplicationController
 
   def update
     if @tag.update_attributes(permitted_params)
+      flash[:success] = ["Successfully updated #{@tag.name}"]
       redirect_to @tag
     else
+      flash[:error] = @tag.errors.full_messages
       render "edit"
     end
   end
@@ -39,6 +43,7 @@ class TagsController < ApplicationController
   def destroy
     @tag.destroy
 
+    flash[:success] = ["Successfully deleted #{@tag.name}"]
     redirect_to "index"
   end
 

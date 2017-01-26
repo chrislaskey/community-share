@@ -1,0 +1,23 @@
+<% if flash[:error].present? || flash[:success].present? %>
+  <div class="alerts">
+
+    <% if flash[:error].present? %>
+      <% flash[:error].map do |message| %>
+        <div class="uk-alert-danger" uk-alert>
+          <%= message %>
+          <a class="uk-alert-close" uk-close></a>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if flash[:success].present? %>
+      <% flash[:success].map do |message| %>
+        <div class="uk-alert-success" uk-alert>
+          <%= message %>
+          <a class="uk-alert-close" uk-close></a>
+        </div>
+      <% end %>
+    <% end %>
+
+  </div>
+<% end %>

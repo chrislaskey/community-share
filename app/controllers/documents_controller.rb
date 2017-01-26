@@ -1,10 +1,10 @@
 class DocumentsController < ApplicationController
 
   before_action :find_document, only: [:show, :edit, :update, :destroy]
+  before_action :find_tags, except: [:show, :destroy]
 
   def index
     @documents = Document.all
-    @tags = Tag.all
   end
 
   def show
@@ -13,27 +13,30 @@ class DocumentsController < ApplicationController
 
   def new
     @document = Document.new
-    @tags = Tag.all
   end
 
   def create
     @document = Document.new(permitted_params)
 
     if @document.save
+      flash[:success] = ["Successfully created #{@document.name}"]
       redirect_to @document
     else
+      flash[:error] = @document.errors.full_messages
       render "new"
     end
   end
 
   def edit
-    @tags = Tag.all
+
   end
 
   def update
     if @document.update_attributes(permitted_params)
+      flash[:success] = ["Successfully updated #{@document.name}"]
       redirect_to @document
     else
+      flash[:error] = @document.errors.full_messages
       render "edit"
     end
   end
@@ -41,6 +44,7 @@ class DocumentsController < ApplicationController
   def destroy
     @document.destroy
 
+    flash[:success] = ["Successfully deleted #{@document.name}"]
     redirect_to "index"
   end
 
@@ -48,6 +52,10 @@ class DocumentsController < ApplicationController
 
   def find_document
     @document ||= Document.find(params[:id])
+  end
+
+  def find_tags
+    @tags = Tag.all
   end
 
   def permitted_params

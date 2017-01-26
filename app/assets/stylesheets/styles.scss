@@ -23,30 +23,64 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .page-header {
-  align-self: stretch;
-  border-bottom: 1px solid #eee;
-  background: #222;
-  display: flex;
-  justify-content: space-between;
-  padding: 0px 15px;
+  background: #1a1a1a;
 
   .uk-navbar-nav > li > a,
   .uk-navbar-item,
   .uk-navbar-toggle {
     color: #fff;
     font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    height: 100%;
     text-transform: none;
   }
 
-  .uk-logo {
-    color: #fff;
-    font-size: 1.125rem;
-    font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  .page-titlebar {
+    align-self: stretch;
+    background: #222;
+    display: flex;
+    height: 75px;
+    justify-content: space-between;
+    padding: 0px 30px 0px 15px;
+
+    .uk-logo {
+      color: #fff;
+      font-size: 1.125rem;
+      font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .user {
+      color: #fff;
+    }
+  }
+
+  .page-navbar {
+    align-self: stretch;
+    display: flex;
+    font-weight: 600;
+    height: 45px;
+    justify-content: space-between;
+    padding: 0px 15px;
   }
 }
 
 .page-body {
   padding: 45px 30px 30px 30px;
+
+  .alerts {
+    margin-top: -25px;
+
+    .uk-alert-danger {
+      background: #fff;
+      border-left: 5px solid #f0506e;
+      box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.10);
+    }
+
+    .uk-alert-success {
+      background: #fff;
+      border-left: 5px solid #32d296;
+      box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.10);
+    }
+  }
 }
 
 .page-main {
