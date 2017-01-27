@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # get "/auth/:provider/callback" => "sessions#create"
-  # provider :facebook, ENV["FACEBOOK_KEY"], ENV["FACEBOOK_SECRET"]
+  devise_for :users, controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
 
   resources :documents
   resources :document_tags, path: "document-tags", only: [:show]
