@@ -1,11 +1,12 @@
 <% if document.tags.present? %>
-  <p>
+  <div class="document-tags">
     <% document.tags.group_by(&:category).map do |category, items| %>
-      <strong><%= category %>: </strong>
+      <span class="tag-category">
+        <strong><%= category %>: </strong>
         <% items.map do |tag| %>
-          <span><%= link_to tag.name, document_tag_path(tag) %></span>
+          <span class="tag"><%= link_to tag.name, document_tag_path(tag) %></span>
         <% end %>
-      </strong>
+      </span>
     <% end %>
-  </p>
+  </div>
 <% end %>
