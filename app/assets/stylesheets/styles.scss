@@ -171,6 +171,12 @@ a, .uk-link {
       }
     }
   }
+
+  .uk-radio:checked,
+  .uk-checkbox:checked,
+  .uk-checkbox:indeterminate {
+    background-color: #9d1e9e;
+  }
 }
 
 .page-sidebar {
@@ -222,6 +228,6 @@ a, .uk-link {
 }
 
 .page-footer {
-  background: #f4f4f4;
+  border-top: 1px dotted #ddd;
   padding: 30px 30px;
 }
