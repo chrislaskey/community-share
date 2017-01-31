@@ -1,5 +1,6 @@
 class DocumentsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :find_document, only: [:show, :edit, :update, :destroy]
   before_action :find_tags, except: [:show, :destroy]
 

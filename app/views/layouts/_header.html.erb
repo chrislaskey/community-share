@@ -7,7 +7,14 @@
       <ul class="uk-navbar-nav uk-visible@m">
         <li><a href="/documents">Documents</a></li>
         <li><a href="/tags">Tags</a></li>
-        <li><a class="user" href="#">User Name</a></li>
+        <li>
+          <% if current_user.present? %>
+            <a class="user" href="#">
+              <span class="image" style="background-image: url('<%= current_user.image %>')"></span>
+              <span class="name"><%= current_user.name %></span>
+            </a>
+          <% end %>
+        </li>
       </ul>
     </div>
     <a class="uk-navbar-toggle uk-hidden@m uk-navbar-toggle-icon uk-icon" href="#" uk-toggle="" uk-navbar-toggle-icon=""></a>

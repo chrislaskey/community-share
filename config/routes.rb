@@ -4,12 +4,14 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    delete 'sign_out', to: 'devise/sessions#destroy', as: :user_log_out
+    delete "sign_out", to: "devise/sessions#destroy", as: :user_log_out
   end
+
+  get :login, to: "login#index"
 
   resources :documents
   resources :document_tags, path: "document-tags", only: [:show]
   resources :tags
 
-  root to: redirect("/documents")
+  root to: redirect("/login")
 end
