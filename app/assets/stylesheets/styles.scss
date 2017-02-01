@@ -232,6 +232,26 @@ a, .uk-link {
   .uk-checkbox:indeterminate {
     background-color: #9d1e9e;
   }
+
+  .uk-table {
+    td {
+      vertical-align: middle;
+    }
+
+    small {
+      color: #888;
+      font-size: 0.75rem;
+    }
+  }
+
+  .user-image {
+    border-radius: 500px;
+    background-size: cover;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+    display: inline-block;
+    height: 35px;
+    width: 35px;
+  }
 }
 
 .page-sidebar {
