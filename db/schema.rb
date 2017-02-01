@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170127001221) do
     t.string   "slug"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["slug"], name: "index_tags_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170127001221) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["uid"], name: "index_users_on_uid", unique: true
   end
 
 end
