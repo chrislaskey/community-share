@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20170127001221) do
     t.string   "name"
     t.string   "email"
     t.string   "image"
+    t.string   "role"
     t.string   "token"
     t.string   "expires_at"
     t.datetime "created_at",                      null: false

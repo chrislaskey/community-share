@@ -1,0 +1,39 @@
+<div class="page-lead">
+  <div class="page-heading">
+    <h1>User</h1>
+  </div>
+  <div class="page-actions">
+    <a href="<%= edit_user_path(@user) %>" class="uk-button uk-button-link">
+      <span uk-icon="icon: file-edit"></span>
+      Edit
+    </a>
+  </div>
+</div>
+
+<%= render "layouts/alerts" %>
+
+<div class="page-main">
+  <div class="page-content">
+    <p><strong>Name</strong></p>
+    <%= @user.name %>
+
+    <p><strong>Email</strong></p>
+    <%= @user.email %>
+
+    <p><strong>Role</strong></p>
+    <%= @user.role %>
+
+    <p><strong>Logins</strong></p>
+    <%= @user.sign_in_count %>
+
+    <p><strong>Last Login</strong></p>
+    <%= time_ago_in_words @user.last_sign_in_at %> ago<br/>
+    <small><%= @user.last_sign_in_at %></small>
+
+    <p><strong>Facebook ID</strong></p>
+    <pre><%= @user.uid %></pre>
+
+    <p><strong>Facebook Token</strong></p>
+    <pre><%= @user.token %></pre>
+  </div>
+</div>

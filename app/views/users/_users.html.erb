@@ -1,14 +1,16 @@
 <% users ||= @users %>
 
 <% if users.any? %>
-  <table class="users-table uk-table">
+  <table class="users-table uk-table uk-table-middle">
     <thead>
       <tr>
         <th>Name</th>
         <th>Image</th>
         <th>Email</th>
-        <th>Sign in Count</th>
+        <th>Role</th>
+        <th>Logins</th>
         <th>Last Login</th>
+        <th class="uk-table-shrink">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -17,10 +19,17 @@
           <td><%= user.name %></td>
           <td><span class="user-image" style="background-image: url('<%= user.image %>')"></span></td>
           <td><%= user.email %></td>
+          <td><%= user.role %></td>
           <td><%= user.sign_in_count %></td>
           <td>
             <%= time_ago_in_words user.last_sign_in_at %> ago<br/>
             <small><%= user.last_sign_in_at %></small>
+          </td>
+          <td>
+            <a href="<%= edit_user_path(user) %>" class="uk-button uk-button-link">
+              <span uk-icon="icon: file-edit"></span>
+              Edit
+            </a>
           </td>
         </tr>
       <% end %>

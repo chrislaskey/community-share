@@ -19,6 +19,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string   :name
       t.string   :email
       t.string   :image
+      t.string   :role
       t.string   :token
       t.string   :expires_at
       t.timestamps 
