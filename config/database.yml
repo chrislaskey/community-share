@@ -6,6 +6,7 @@
 #
 default: &default
   adapter: postgresql
+  host: 127.0.0.1
   database: <%= ENV["POSTGRESQL_DATABASE"] %>
   password: <%= ENV["POSTGRESQL_PASSWORD"] %>
   username: <%= ENV["POSTGRESQL_USERNAME"] %>
