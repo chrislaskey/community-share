@@ -6,22 +6,21 @@
 #
 default: &default
   adapter: postgresql
-  username: <%= ENV["POSTGRESQL_USERNAME"] %>
+  database: <%= ENV["POSTGRESQL_DATABASE"] %>
   password: <%= ENV["POSTGRESQL_PASSWORD"] %>
+  username: <%= ENV["POSTGRESQL_USERNAME"] %>
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
-  database: community_share_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: community_share_test
+  database: <%= ENV["POSTGRESQL_DATABASE"] %>_test
 
 production:
   <<: *default
-  database: community_share_prod
