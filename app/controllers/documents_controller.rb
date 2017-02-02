@@ -18,6 +18,7 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.new(permitted_params)
+    @document.user = current_user
 
     if @document.save
       flash[:success] = ["Successfully created #{@document.name}"]

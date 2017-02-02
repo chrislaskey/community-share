@@ -13,7 +13,7 @@ class User < ApplicationRecord
   after_initialize :set_role
 
   def last_sign_in_ago
-    last_sign_in_at ? time_ago_in_words(last_sign_in_at) + "ago" : "-"
+    last_sign_in_at ? time_ago_in_words(last_sign_in_at) + " ago" : "-"
   end
 
   private

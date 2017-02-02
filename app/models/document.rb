@@ -1,5 +1,6 @@
 class Document < ApplicationRecord
 
+  belongs_to :user
   has_many :document_tags, dependent: :destroy
   has_many :tags, through: :document_tags
 

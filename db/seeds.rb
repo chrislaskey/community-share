@@ -22,7 +22,7 @@ tags.map do |tag|
 end
 
 users = [
-  { email: ENV["ADMIN_USER_EMAIL"], role: "admin" }
+  { name: "Admin", email: ENV["ADMIN_USER_EMAIL"], role: "admin" }
 ]
 
 users.map do |user|
