@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20170127001221) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "document_tags", force: :cascade do |t|
     t.integer  "document_id"
     t.integer  "tag_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["document_id"], name: "index_document_tags_on_document_id"
-    t.index ["tag_id"], name: "index_document_tags_on_tag_id"
+    t.index ["document_id"], name: "index_document_tags_on_document_id", using: :btree
+    t.index ["tag_id"], name: "index_document_tags_on_tag_id", using: :btree
   end
 
   create_table "documents", force: :cascade do |t|
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170127001221) do
     t.string   "slug"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["slug"], name: "index_tags_on_slug", unique: true
+    t.index ["slug"], name: "index_tags_on_slug", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -60,8 +63,8 @@ ActiveRecord::Schema.define(version: 20170127001221) do
     t.string   "expires_at"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["uid"], name: "index_users_on_uid", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["uid"], name: "index_users_on_uid", unique: true, using: :btree
   end
 
 end
