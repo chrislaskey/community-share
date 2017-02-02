@@ -7,6 +7,10 @@
       <span uk-icon="icon: file-edit"></span>
       Edit
     </a>
+    <a href="<%= user_path(@user) %>" data-confirm="Are you sure?" data-method="delete" class="uk-button uk-button-link">
+      <span uk-icon="icon: trash"></span>
+      Delete
+    </a>
   </div>
 </div>
 
@@ -27,13 +31,13 @@
     <%= @user.sign_in_count %>
 
     <p><strong>Last Login</strong></p>
-    <%= time_ago_in_words @user.last_sign_in_at %> ago<br/>
+    <%= @user.last_sign_in_ago %><br/>
     <small><%= @user.last_sign_in_at %></small>
 
     <p><strong>Facebook ID</strong></p>
-    <pre><%= @user.uid %></pre>
+    <pre><%= @user.uid || "-" %></pre>
 
     <p><strong>Facebook Token</strong></p>
-    <pre><%= @user.token %></pre>
+    <pre><%= @user.token || "-" %></pre>
   </div>
 </div>

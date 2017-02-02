@@ -16,13 +16,19 @@
     <tbody>
       <% users.map do |user| %>
         <tr>
-          <td><%= user.name %></td>
+          <td class="uk-table-link">
+            <%= link_to user.name, user_path(user), class: "uk-link-reset" %>
+          </td>
           <td><span class="user-image" style="background-image: url('<%= user.image %>')"></span></td>
-          <td><%= user.email %></td>
-          <td><%= user.role %></td>
+          <td class="uk-table-link">
+            <%= link_to user.email, user_path(user), class: "uk-link-reset" %>
+          </td>
+          <td class="uk-table-link">
+            <%= link_to user.role, user_path(user), class: "uk-link-reset" %>
+          </td>
           <td><%= user.sign_in_count %></td>
           <td>
-            <%= time_ago_in_words user.last_sign_in_at %> ago<br/>
+            <%= user.last_sign_in_ago %><br/>
             <small><%= user.last_sign_in_at %></small>
           </td>
           <td>

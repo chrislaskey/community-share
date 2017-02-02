@@ -1,14 +1,37 @@
 <%= form_for @user do |form| %>
 
-  <p>
-    <%= form.label :name %><br>
-    <pre><%= @user.name %></pre>
-  </p>
+  <% if @user.persisted? %>
+    <p>
+      <%= form.label :name %><br>
+      <pre><%= @user.name %></pre>
+    </p>
+  <% else %>
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field :name, class: "uk-input" %>
+    </p>
+  <% end %>
+
+  <% if @user.persisted? %>
+    <p>
+      <%= form.label :email %><br>
+      <pre><%= @user.email %></pre>
+    </p>
+  <% else %>
+    <p>
+      <%= form.label :email %><br>
+      <%= form.text_field :email, class: "uk-input" %>
+    </p>
+  <% end %>
 
   <p>
     <%= form.label :role %><br>
-    <% roles = User::ROLES.map{ |role| [role.titleize, role] } %>
-    <%= form.select :role, options_for_select(roles), {}, class: "uk-select" %>
+    <%
+      role = @user.role
+      role = "default" unless @user.persisted?
+      roles = User::ROLES.map{ |role| [role.titleize, role] }
+    %>
+    <%= form.select :role, options_for_select(roles, role), {}, class: "uk-select" %>
   </p>
 
   <p>
