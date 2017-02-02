@@ -18,13 +18,13 @@ tags = [
 ]
 
 tags.map do |tag|
-  Tag.create(tag)
+  Tag.find_or_create_by(tag)
 end
 
-users = [
-  { name: "Admin", email: ENV["ADMIN_USER_EMAIL"], role: "admin" }
-]
-
-users.map do |user|
-  User.create(user)
+ENV["ADMIN_USER_EMAILS"].split(",").map do |email|
+  User.find_or_create_by(
+    name: "Admin",
+    email: email,
+    role: "admin"
+  )
 end
