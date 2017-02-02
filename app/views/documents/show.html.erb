@@ -35,6 +35,6 @@
 
     <p><strong>File</strong></p>
 
-    <p><%= link_to "#{@document.name.parameterize}.pdf", @document.file.url %></p>
+    <p><%= link_to "#{@document.slug}", @document.file.url %></p>
   </div>
 </div>
