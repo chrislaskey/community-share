@@ -10,7 +10,7 @@
         <th>Role</th>
         <th>Logins</th>
         <th>Last Login</th>
-        <th class="uk-table-shrink">Actions</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -19,7 +19,11 @@
           <td class="uk-table-link">
             <%= link_to user.name, user_path(user), class: "uk-link-reset" %>
           </td>
-          <td><span class="user-image" style="background-image: url('<%= user.image %>')"></span></td>
+          <td>
+            <% if user.image.present? %>
+              <span class="user-image" style="background-image: url('<%= user.image %>')"></span>
+            <% end %>
+          </td>
           <td class="uk-table-link">
             <%= link_to user.email, user_path(user), class: "uk-link-reset" %>
           </td>
@@ -32,9 +36,9 @@
             <small><%= user.last_sign_in_at %></small>
           </td>
           <td>
-            <a href="<%= edit_user_path(user) %>" class="uk-button uk-button-link">
+            <a href="<%= user_path(user) %>" class="uk-button uk-button-link">
               <span uk-icon="icon: file-edit"></span>
-              Edit
+              Details
             </a>
           </td>
         </tr>
