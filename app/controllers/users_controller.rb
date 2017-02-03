@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all.order(:role, :name)
+    @users = User.paginate(page: params[:page]).order(:role, :name)
   end
 
   def show

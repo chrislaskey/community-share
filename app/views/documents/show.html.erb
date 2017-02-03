@@ -23,6 +23,9 @@
     <p><strong>Name</strong></p>
     <%= @document.name %>
 
+    <p><strong>Description</strong></p>
+    <%= @document.description %>
+
     <% if @document.tags.present? %>
       <p>
         <% @document.tags.group_by(&:category).map do |category, items| %>

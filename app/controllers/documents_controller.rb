@@ -5,7 +5,7 @@ class DocumentsController < ApplicationController
   before_action :find_tags, except: [:show, :destroy]
 
   def index
-    @documents = Document.all
+    @documents = Document.paginate(page: params[:page])
   end
 
   def show
@@ -61,7 +61,7 @@ class DocumentsController < ApplicationController
   end
 
   def permitted_params
-    params.require(:document).permit(:file, :name, tag_ids: [])
+    params.require(:document).permit(:description, :file, :name, tag_ids: [])
   end
 
 end
