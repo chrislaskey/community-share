@@ -6,12 +6,12 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.0.1'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
-gem 'dotenv-rails'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'paperclip', "~> 5.0.0"
