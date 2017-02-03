@@ -22,7 +22,7 @@ port ENV.fetch("PORT") { 3000 }
 
 # Socket
 #
-bind "unix://#{temp_dir}/puma/socket"
+bind "unix://#{temp_dir}/socket"
 
 # Logging
 #
