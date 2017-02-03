@@ -5,7 +5,7 @@ class DocumentsController < ApplicationController
   before_action :find_tags, except: [:show, :destroy]
 
   def index
-    @documents = Document.paginate(page: params[:page])
+    @documents = Document.paginate(page: params[:page]).order(:name)
   end
 
   def show
