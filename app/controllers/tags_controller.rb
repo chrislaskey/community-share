@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
 
+  before_action ->{ require_role :admin }
   before_action :authenticate_user!
   before_action :find_tag, only: [:show, :edit, :update, :destroy]
 

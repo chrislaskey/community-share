@@ -7,10 +7,12 @@
       <span uk-icon="icon: file-edit"></span>
       Edit
     </a>
-    <a href="<%= document_path(@document) %>" data-confirm="Are you sure?" data-method="delete" class="uk-button uk-button-link">
-      <span uk-icon="icon: trash"></span>
-      Delete
-    </a>
+    <% if has_role? :admin %>
+      <a href="<%= document_path(@document) %>" data-confirm="Are you sure?" data-method="delete" class="uk-button uk-button-link">
+        <span uk-icon="icon: trash"></span>
+        Delete
+      </a>
+    <% end %>
   </div>
 </div>
 

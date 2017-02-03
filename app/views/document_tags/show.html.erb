@@ -3,10 +3,12 @@
     <h1>Related Documents</h1>
   </div>
   <div class="page-actions">
-    <a href="<%= tag_path(@tag) %>" class="uk-button uk-button-link">
-      <span uk-icon="icon: file-edit"></span>
-      Tag Details
-    </a>
+    <% if has_role? :admin %>
+      <a href="<%= tag_path(@tag) %>" class="uk-button uk-button-link">
+        <span uk-icon="icon: file-edit"></span>
+        Tag Details
+      </a>
+    <% end %>
   </div>
 </div>
 

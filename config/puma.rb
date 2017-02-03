@@ -1,4 +1,4 @@
-require 'dotenv/load'
+require "dotenv/load"
 
 # Puma can serve each request in a thread from an internal thread pool.
 # The `threads` method setting takes two numbers a minimum and maximum.
@@ -62,7 +62,7 @@ workers ENV.fetch("WEB_CONCURRENCY") { 1 }
 on_worker_boot do
   require "active_record"
   ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
-  ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
+  ActiveRecord::Base.establish_connection
 end
 
 # PID
