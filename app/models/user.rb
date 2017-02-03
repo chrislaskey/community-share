@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_many :downloads
+
   include ActionView::Helpers::DateHelper
 
   ROLES = %w(admin member pending)

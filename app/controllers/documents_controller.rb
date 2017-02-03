@@ -13,6 +13,8 @@ class DocumentsController < ApplicationController
   end
 
   def download
+    Download.create(document: @document, user: current_user)
+
     return redirect_to @document.file.url
   end
 
