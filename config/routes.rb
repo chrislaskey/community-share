@@ -9,7 +9,12 @@ Rails.application.routes.draw do
 
   get :login, to: "login#index"
 
-  resources :documents
+  resources :documents do
+    member do
+      get :download
+    end
+  end
+
   resources :document_tags, path: "document-tags", only: [:show]
   resources :tags
   resources :users

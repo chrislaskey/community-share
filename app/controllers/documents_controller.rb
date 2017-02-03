@@ -1,7 +1,7 @@
 class DocumentsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :find_document, only: [:show, :edit, :update, :destroy]
+  before_action :find_document, only: [:show, :download, :edit, :update, :destroy]
   before_action :find_tags, except: [:show, :destroy]
 
   def index
@@ -10,6 +10,10 @@ class DocumentsController < ApplicationController
 
   def show
 
+  end
+
+  def download
+    return redirect_to @document.file.url
   end
 
   def new
