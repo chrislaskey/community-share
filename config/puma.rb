@@ -16,13 +16,13 @@ temp_dir = "#{app_dir}/tmp/puma"
 #
 rails_env = ENV.fetch("RAILS_ENV") { "development" }
 
-# Specifies the `port` that Puma will listen on to receive requests, default is 3000.
+# Bind to port or socket
 #
-port ENV.fetch("PORT") { 3000 }
-
-# Socket
-#
-bind "unix://#{temp_dir}/socket"
+if rails_env.downcase == "production"
+  bind "unix://#{temp_dir}/socket"
+else
+  port ENV.fetch("PORT") { 3000 }
+end
 
 # Logging
 #
