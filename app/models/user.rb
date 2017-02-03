@@ -2,7 +2,7 @@ class User < ApplicationRecord
 
   include ActionView::Helpers::DateHelper
 
-  ROLES = %w(admin default pending)
+  ROLES = %w(admin member pending)
 
   devise :rememberable, :timeoutable, :trackable, :omniauthable, omniauth_providers: [:facebook]
 
