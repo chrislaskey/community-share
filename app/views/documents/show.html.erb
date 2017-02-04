@@ -40,7 +40,7 @@
 
     <p><strong>File</strong></p>
 
-    <p><%= link_to "#{@document.file_file_name}", download_document_path(@document) %></p>
+    <p><%= link_to @document.file_file_name, download_document_path(@document) %></p>
 
     <p><strong>File Size</strong></p>
     <%= @document.file_file_size %>

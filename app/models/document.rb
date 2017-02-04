@@ -5,10 +5,7 @@ class Document < ApplicationRecord
   has_many :downloads
   has_many :tags, through: :document_tags
 
-  has_attached_file :file, {
-    url: "/system/:hash.:extension",
-    hash_secret: "yxeuriffeuhhvqzzqvchvavjgftjuoahrgbotbuxflkqvekffg"
-  }
+  has_attached_file :file
 
   validates :name, uniqueness: true
   validates :slug, uniqueness: true

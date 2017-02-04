@@ -10,13 +10,17 @@
     <%= form.text_area :description, class: "uk-textarea" %>
   </p>
 
+  <% if @document.file.present? %>
+    <p>
+      <%= form.label :current_file %><br>
+      <%= link_to @document.file_file_name, download_document_path(@document) %>
+    </p>
+  <% end %>
+
   <div>
     <%= form.label :file %><br>
     <div class="uk-form-custom" uk-form-custom>
       <%= form.file_field :file %>
-      <% if @document.file.present? %>
-        <p><%= link_to "#{@document.name.parameterize}.pdf", @document.file.url %></p>
-      <% end %>
       <button class="uk-button uk-button-default" type="button" tabindex="-1">Select File</button>
     </div>
   </div>
