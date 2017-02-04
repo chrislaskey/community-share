@@ -5,7 +5,7 @@ class DocumentsController < ApplicationController
   before_action :find_tags, except: [:show, :destroy]
 
   def index
-    @documents = Document.paginate(page: params[:page]).order(:name)
+    @documents = Document.in_community(current_community).paginate(page: params[:page]).order(:name)
   end
 
   def show
@@ -13,7 +13,7 @@ class DocumentsController < ApplicationController
   end
 
   def download
-    Download.create(document: @document, user: current_user)
+    Download.create(document: @document, user: current_user, community: current_community)
 
     return redirect_to @document.file.url
   end
@@ -24,6 +24,7 @@ class DocumentsController < ApplicationController
 
   def create
     @document = Document.new(permitted_params)
+    @document.community = current_community
     @document.user = current_user
 
     if @document.save
@@ -59,11 +60,11 @@ class DocumentsController < ApplicationController
   private
 
   def find_document
-    @document ||= Document.find(params[:id])
+    @document ||= Document.in_community(current_community).find(params[:id])
   end
 
   def find_tags
-    @tags = Tag.all
+    @tags = Tag.in_community(current_community)
   end
 
   def permitted_params

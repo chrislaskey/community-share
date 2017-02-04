@@ -28,7 +28,7 @@
             <%= link_to user.email, user_path(user), class: "uk-link-reset" %>
           </td>
           <td class="uk-table-link">
-            <%= link_to user.role, user_path(user), class: "uk-link-reset" %>
+            <%= link_to user.role(current_community), user_path(user), class: "uk-link-reset" %>
           </td>
           <td><%= user.sign_in_count %></td>
           <td>

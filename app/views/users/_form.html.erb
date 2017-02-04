@@ -5,11 +5,6 @@
       <%= form.label :name %><br>
       <pre><%= @user.name %></pre>
     </p>
-  <% else %>
-    <p>
-      <%= form.label :name %><br>
-      <%= form.text_field :name, class: "uk-input" %>
-    </p>
   <% end %>
 
   <% if @user.persisted? %>
@@ -27,11 +22,11 @@
   <p>
     <%= form.label :role %><br>
     <%
-      role = @user.role
-      role = "default" unless @user.persisted?
-      roles = User::ROLES.map{ |role| [role.titleize, role] }
+      role = @user.role(current_community)
+      role = Membership::DEFAULT_COMMUNITY_ROLE unless @user.persisted?
+      roles = Membership::ROLES.map{ |item| [item.titleize, item] }
     %>
-    <%= form.select :role, options_for_select(roles, role), {}, class: "uk-select" %>
+    <%= select_tag [:membership, :role], options_for_select(roles, role), {}, class: "uk-select" %>
   </p>
 
   <p>

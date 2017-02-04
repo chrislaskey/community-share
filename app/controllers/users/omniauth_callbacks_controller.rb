@@ -3,6 +3,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     find_user
     update_user
+    update_memberships
 
     session["devise.facebook_data"] = user_data
 
@@ -39,6 +40,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       token: user_data.credentials.token,
       uid: user_data.uid
     )
+  end
+
+  def update_memberships
+
   end
 
 end

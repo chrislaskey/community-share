@@ -1,11 +1,14 @@
 class Tag < ApplicationRecord
 
+  belongs_to :community
+
   has_many :document_tags, dependent: :destroy
   has_many :documents, through: :document_tags
 
+  validates :category, presence: true
+  validates :community, presence: true
   validates :name, uniqueness: {scope: :category}
   validates :slug, uniqueness: {scope: :category}
-  validates :category, presence: true
 
   before_save :create_slug
 

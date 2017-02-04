@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   before_action :find_tag, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tags = Tag.all
+    @tags = Tag.in_community(current_community)
   end
 
   def show
@@ -18,6 +18,7 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.new(permitted_params)
+    @tag.community = current_community
 
     if @tag.save
       flash[:success] = ["Successfully created #{@tag.name}"]
@@ -52,7 +53,7 @@ class TagsController < ApplicationController
   private
 
   def find_tag
-    @tag ||= Tag.find(params[:id])
+    @tag ||= Tag.in_community(current_community).find(params[:id])
   end
 
   def permitted_params

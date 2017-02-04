@@ -6,25 +6,39 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+communities = [
+  { name: "Default", slug: "default" }
+]
+
+communities.map do |community|
+  Community.find_or_create_by!(community)
+end
+
+default = Community.first
+
 tags = [
-  { category: "Education Level", name: "Pre-K" },
-  { category: "Education Level", name: "Grade 1-4" },
-  { category: "Education Level", name: "Grade 4-8" },
-  { category: "Education Level", name: "Grade 8-12" },
-  { category: "Subject", name: "Biology" },
-  { category: "Subject", name: "Ecology" },
-  { category: "Subject", name: "Math" },
-  { category: "Subject", name: "Physics" }
+  { community: default, category: "Education Level", name: "Pre-K" },
+  { community: default, category: "Education Level", name: "Grade 1-4" },
+  { community: default, category: "Education Level", name: "Grade 4-8" },
+  { community: default, category: "Education Level", name: "Grade 8-12" },
+  { community: default, category: "Subject", name: "Biology" },
+  { community: default, category: "Subject", name: "Ecology" },
+  { community: default, category: "Subject", name: "Math" },
+  { community: default, category: "Subject", name: "Physics" }
 ]
 
 tags.map do |tag|
-  Tag.find_or_create_by(tag)
+  Tag.find_or_create_by!(tag)
 end
 
 ENV["ADMIN_USER_EMAILS"].split(",").map do |email|
-  User.find_or_create_by(
-    name: "Admin",
-    email: email,
-    role: "admin"
+  user = User.find_or_create_by!(
+    email: email
+  )
+
+  Membership.find_or_create_by!(
+    community: default,
+    user: user,
+    role: Membership::ROLES.first
   )
 end

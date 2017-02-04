@@ -1,12 +1,14 @@
 class Document < ApplicationRecord
 
+  belongs_to :community
   belongs_to :user
-  has_many :document_tags, dependent: :destroy
   has_many :downloads
+  has_many :document_tags, dependent: :destroy
   has_many :tags, through: :document_tags
 
   has_attached_file :file
 
+  validates :community, presence: true
   validates :name, uniqueness: true
   validates :slug, uniqueness: true
   validates :file, presence: true

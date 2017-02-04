@@ -5,7 +5,9 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.paginate(page: params[:page]).order(:role, :name)
+    @users = User.in_community(current_community).paginate(page: params[:page]).order(:name, :email).sort_by do |user|
+      user.role(current_community)
+    end
   end
 
   def show
@@ -17,9 +19,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(permitted_params)
+    @user = User.find_or_initialize_by(permitted_user_params)
 
     if @user.save
+      Membership.create(
+        community: current_community,
+        role: permitted_membership_params,
+        user: @user
+      )
       flash[:success] = ["Successfully created #{@user.name}"]
       redirect_to users_path
     else
@@ -38,7 +45,7 @@ class UsersController < ApplicationController
       return render "edit"
     end
 
-    if @user.update_attributes(permitted_params)
+    if @user.update_attributes(permitted_user_params) && update_role
       flash[:success] = ["Successfully updated #{@user.name}"]
       redirect_to users_path
     else
@@ -65,8 +72,12 @@ class UsersController < ApplicationController
     @user ||= User.find(params[:id])
   end
 
-  def permitted_params
-    params.require(:user).permit(:email, :name, :role)
+  def permitted_user_params
+    params.require(:user).permit(:email, :name)
+  end
+
+  def permitted_membership_params
+    params.require(:membership).permit(:role)
   end
 
   def is_current_user?
@@ -74,7 +85,12 @@ class UsersController < ApplicationController
   end
 
   def updating_own_role?
-    is_current_user? && current_user.role != params[:user][:role]
+    is_current_user? && current_user.role != params[:membership][:role]
+  end
+
+  def update_role
+    membership = @user.membership(current_community)
+    membership.update_attributes(permitted_membership_params)
   end
 
 end
