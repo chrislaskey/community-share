@@ -40,7 +40,7 @@ if rails_env.downcase == "production"
   # Workers do not work on JRuby or Windows (both of which do not support
   # processes).
   #
-  workers ENV.fetch("WEB_CONCURRENCY") { 1 }
+  # workers ENV.fetch("WEB_CONCURRENCY") { 1 }
 
   # Use the `preload_app!` method when specifying a `workers` number.
   # This directive tells Puma to first boot the application and load code
@@ -58,11 +58,11 @@ if rails_env.downcase == "production"
   # or connections that may have been created at application boot, Ruby
   # cannot share connections between processes.
   #
-  on_worker_boot do
-    require "active_record"
-    ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
-    ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
-  end
+  # on_worker_boot do
+  #   require "active_record"
+  #   ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
+  #   ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
+  # end
 
   # PID
   #
