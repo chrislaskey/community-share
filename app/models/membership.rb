@@ -8,15 +8,20 @@ class Membership < ApplicationRecord
   belongs_to :user
 
   validates :community, presence: true
-  validates :user, presence: true
+  validates :user, uniqueness: { scope: :community }
   validates :role, inclusion: { in: Membership::ROLES }
 
   after_initialize :set_role
+  after_initialize :set_user
 
   private
 
   def set_role
-    self.role ||= Membership::ROLES.last
+    self.role ||= Membership::DEFAULT_ROLE
+  end
+
+  def set_user
+    self.user ||= User.new
   end
 
 end

@@ -1,0 +1,36 @@
+<%= form_for @membership do |form| %>
+
+  <% if @membership.persisted? %>
+    <p>
+      <%= form.label :name %><br>
+      <pre><%= @membership.user.name.presence || " " %></pre>
+    </p>
+  <% end %>
+
+  <% if @membership.persisted? %>
+    <p>
+      <%= form.label :email %><br>
+      <pre><%= @membership.user.email.presence || " " %></pre>
+    </p>
+  <% else %>
+    <p>
+      <%= form.label :email %><br>
+      <input class="uk-input" name="user[email]" />
+    </p>
+  <% end %>
+
+  <p>
+    <%= form.label :role %><br>
+    <%
+      role = @membership.role
+      role = Membership::DEFAULT_COMMUNITY_ROLE unless @membership.persisted?
+      roles = Membership::ROLES.map{ |item| [item.titleize, item] }
+    %>
+    <%= form.select :role, options_for_select(roles, role), {}, class: "uk-select" %>
+  </p>
+
+  <p>
+    <%= form.submit class: "uk-button uk-button-default" %>
+  </p>
+
+<% end %>

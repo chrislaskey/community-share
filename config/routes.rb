@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   end
 
   resources :document_tags, path: "document-tags", only: [:show]
+  resources :memberships
   resources :tags
-  resources :users
 
   root to: redirect("/login")
 end

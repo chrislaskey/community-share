@@ -5,10 +5,10 @@
     </div>
     <div class="page-navbar">
       <ul class="uk-navbar-nav uk-visible@m">
-        <li><a href="/documents">Documents</a></li>
+        <li><%= link_to "Documents", documents_path %></li>
         <% if has_role? :admin %>
-          <li><a href="/tags">Tags</a></li>
-          <li><a href="/users">Users</a></li>
+          <li><%= link_to "Tags", tags_path %></li>
+          <li><%= link_to "Memberships", memberships_path %></li>
         <% end %>
         <li>
           <% if current_user.present? %>

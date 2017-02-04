@@ -1,0 +1,49 @@
+<% memberships ||= @memberships %>
+
+<% if memberships.any? %>
+  <table class="memberships-table uk-table uk-table-middle">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Logins</th>
+        <th>Last Login</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% memberships.map do |membership| %>
+        <tr>
+          <td class="uk-table-link">
+            <%= link_to membership.user.name.presence || "-", membership_path(membership), class: "uk-link-reset" %>
+          </td>
+          <td>
+            <% if membership.user.image.present? %>
+              <span class="user-image" style="background-image: url('<%= membership.user.image %>')"></span>
+            <% end %>
+          </td>
+          <td class="uk-table-link">
+            <%= link_to membership.user.email, membership_path(membership), class: "uk-link-reset" %>
+          </td>
+          <td class="uk-table-link">
+            <%= link_to membership.role, membership_path(membership), class: "uk-link-reset" %>
+          </td>
+          <td><%= membership.user.sign_in_count %></td>
+          <td>
+            <%= membership.user.last_sign_in_ago %><br/>
+            <small><%= membership.user.last_sign_in_at %></small>
+          </td>
+          <td>
+            <a href="<%= membership_path(membership) %>" class="uk-button uk-button-link">
+              <span uk-icon="icon: file-edit"></span>
+              Details
+            </a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate memberships, class: "uk-pagination", next_label: ">", previous_label: "<" %>
+<% end %>
