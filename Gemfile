@@ -8,7 +8,6 @@ end
 gem 'rails', '~> 5.0.1'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
 gem 'pg'
-gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
@@ -19,6 +18,7 @@ gem 'aws-sdk', '~> 2.0'
 gem 'will_paginate', '~> 3.1.0'
 
 group :development, :test do
+  gem 'puma', '~> 3.0'
   gem 'byebug', platform: :mri
 end
 
@@ -28,6 +28,10 @@ group :development do
   gem 'pry-rails'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :production do
+  gem 'unicorn'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
