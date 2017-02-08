@@ -15,6 +15,12 @@
 <div class="page-main">
   <div class="page-content">
     <%= render "documents/documents" %>
+    <% if @documents.empty? %>
+      <div class="uk-placeholder uk-text-center">
+        <span uk-icon="icon: cloud-upload"></span>
+        <span class="uk-text-middle">No documents found. <%= link_to "Add a new one", new_document_path %></span>
+      </div>
+    <% end %>
   </div>
   <%= render "documents/sidebar_tags" %>
 </div>

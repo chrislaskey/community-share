@@ -47,7 +47,7 @@ class TagsController < ApplicationController
     @tag.destroy
 
     flash[:success] = ["Successfully deleted #{@tag.name}"]
-    redirect_to "index"
+    redirect_to tags_path
   end
 
   private

@@ -9,8 +9,8 @@ class Document < ApplicationRecord
   has_attached_file :file
 
   validates :community, presence: true
-  validates :name, uniqueness: true
-  validates :slug, uniqueness: true
+  validates :name, presence: true, uniqueness: true
+  validates :slug, presence: true, uniqueness: true
   validates :file, presence: true
 
   validates_attachment_content_type :file, content_type: [
@@ -26,7 +26,9 @@ class Document < ApplicationRecord
     "image/png"
   ]
 
-  before_save :create_slug
+  before_validation :create_slug
+
+  private
 
   def create_slug
     self.slug = name.parameterize

@@ -19,9 +19,13 @@
 
   <div>
     <%= form.label :file %><br>
-    <div class="uk-form-custom" uk-form-custom>
-      <%= form.file_field :file %>
-      <button class="uk-button uk-button-default" type="button" tabindex="-1">Select File</button>
+    <div class="uk-placeholder uk-text-center">
+      <span uk-icon="icon: cloud-upload"></span>
+      <span class="uk-text-middle">To attach a file to the document</span>
+      <div class="uk-form-custom" uk-form-custom>
+        <%= form.file_field :file %>
+        <span class="uk-link">select one</span>
+      </div>
     </div>
   </div>
 

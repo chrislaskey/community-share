@@ -171,16 +171,24 @@ a,
   margin: 30px 0px;
   padding: 0px 30px;
 
+  .uk-alert {
+    margin: 0 0 15px 0;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
   .uk-alert-danger {
-    background: #fff;
-    border-left: 5px solid #f0506e;
-    margin: 0px;
+    background: #fff6f9;
+    border: 1px solid #fbd3e2;
+    color: #ec678a;
   }
 
   .uk-alert-success {
-    background: #fff;
-    border-left: 5px solid #32d296;
-    margin: 0px;
+    background: #f7fff9;
+    border: 1px solid #b9f1c4;
+    color: #59b16b;
   }
 }
 
@@ -253,6 +261,16 @@ a,
     small {
       color: #888;
       font-size: 0.75rem;
+    }
+  }
+
+  .uk-placeholder {
+    border: 1px dashed #ccc;
+    border: 1px solid #e2e2e2;
+
+    &:hover {
+      background: #f8f8f8;
+      border: 1px solid #e2e2e2;
     }
   }
 

@@ -54,7 +54,7 @@ class DocumentsController < ApplicationController
     @document.destroy
 
     flash[:success] = ["Successfully deleted #{@document.name}"]
-    redirect_to "index"
+    redirect_to documents_path
   end
 
   private

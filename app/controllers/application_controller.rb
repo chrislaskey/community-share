@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   end
 
   def has_role?(*roles)
+    return redirect_to "/" unless current_user.present?
     return false unless current_user.memberships.present?
     current_user.role(current_community).to_sym.in? roles
   end
