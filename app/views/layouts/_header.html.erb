@@ -9,7 +9,7 @@
         <% if has_role? :admin %>
           <li><%= link_to "Tags", tags_path %></li>
           <li><%= link_to "Downloads", downloads_path %></li>
-          <li><%= link_to "Memberships", memberships_path %></li>
+          <li><%= link_to "Members", memberships_path %></li>
         <% end %>
         <li>
           <% if current_user.present? %>
