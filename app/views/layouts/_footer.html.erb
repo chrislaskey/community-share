@@ -1,11 +1,3 @@
 <div class="page-footer">
 
-  <div class="page-footer-inner">
-    <% if current_user.present? %>
-      <span>Logged in with Facebook. <%= link_to "Log Out", user_log_out_path, method: :delete %>
-    <% else %>
-      <%= link_to "Log in with Facebook", user_facebook_omniauth_authorize_path %>
-    <% end %>
-  </div>
-
 </div>

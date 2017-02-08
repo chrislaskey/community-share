@@ -17,6 +17,11 @@
               <span class="image" style="background-image: url('<%= current_user.image %>')"></span>
               <span class="name"><%= current_user.name %></span>
             </a>
+            <div uk-dropdown>
+              <ul class="uk-nav uk-dropdown-nav">
+                <li><%= link_to "Log Out", user_log_out_path, method: :delete %></li>
+              </ul>
+            </div>
           <% end %>
         </li>
       </ul>

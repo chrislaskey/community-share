@@ -1,15 +1,14 @@
 @import 'https://fonts.googleapis.com/css?family=Quicksand';
 
 html, body {
-  background: #fff;
+  background: #f4f4f4;
+  color: #444;
   font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   font-weight: normal;
   line-height: 1.5;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  background: #fff;
-  color: #444;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -66,6 +65,10 @@ a,
       text-decoration: none;
     }
   }
+}
+
+.page-container {
+  background: #fff;
 }
 
 .page-header {
@@ -195,8 +198,8 @@ a,
 .page-main {
   display: flex;
   justify-content: space-between;
-  margin: 30px 0px;
-  padding: 0px 30px;
+  margin: 30px 0px 0px 0px;
+  padding: 0px 30px 30px 30px;
 }
 
 .page-content {
