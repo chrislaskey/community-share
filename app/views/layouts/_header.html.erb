@@ -18,7 +18,8 @@
               <span class="name"><%= current_user.name %></span>
             </a>
             <div uk-dropdown>
-              <ul class="uk-nav uk-dropdown-nav">
+              <ul class="uk-nav uk-nav-default">
+                <li class="uk-nav-header">Actions</li>
                 <li><%= link_to "Log Out", user_log_out_path, method: :delete %></li>
               </ul>
             </div>
