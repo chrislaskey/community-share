@@ -44,5 +44,11 @@
 
     <p><strong>File Size</strong></p>
     <%= @document.file_file_size %>
+
+    <% if has_role?(:admin) && @document.downloads.present? %>
+      <h3>Document Downloads</h3>
+
+      <%= render "downloads/downloads", downloads: @document.downloads.paginate(page: params[:page]), show_document: false %>
+    <% end %>
   </div>
 </div>

@@ -4,7 +4,9 @@
   <table class="downloads-table uk-table uk-table-middle">
     <thead>
       <tr>
-        <th>Document</th>
+        <% if show_document %>
+          <th>Document</th>
+        <% end %>
         <th>Image</th>
         <th>Name</th>
         <th>Email</th>
@@ -15,13 +17,15 @@
     <tbody>
       <% downloads.map do |download| %>
         <tr>
-          <td class="uk-table-link">
-            <% if download.document.present? %>
-              <%= link_to download.document.name, document_path(download.document), class: "uk-link-reset" %>
-            <% else %>
-              -
-            <% end %>
-          </td>
+          <% if show_document %>
+            <td class="uk-table-link">
+              <% if download.document.present? %>
+                <%= link_to download.document.name, document_path(download.document), class: "uk-link-reset" %>
+              <% else %>
+                -
+              <% end %>
+            </td>
+          <% end %>
           <td>
             <% if download.user.image.present? %>
               <span class="user-image" style="background-image: url('<%= download.user.image %>')"></span>
