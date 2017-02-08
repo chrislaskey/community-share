@@ -1,0 +1,42 @@
+<% downloads ||= @downloads %>
+
+<% if downloads.any? %>
+  <table class="downloads-table uk-table uk-table-middle">
+    <thead>
+      <tr>
+        <th>Document</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% downloads.map do |download| %>
+        <tr>
+          <td class="uk-table-link">
+            <% if download.document.present? %>
+              <%= link_to download.document.name, document_path(download.document), class: "uk-link-reset" %>
+            <% else %>
+              -
+            <% end %>
+          </td>
+          <td>
+            <% if download.user.image.present? %>
+              <span class="user-image" style="background-image: url('<%= download.user.image %>')"></span>
+            <% end %>
+          </td>
+          <td><%= download.user.name.presence %></td>
+          <td><%= download.user.email %></td>
+          <td><%= download.user.role(current_community) %></td>
+          <td>
+            <%= time_ago_in_words(download.created_at) + " ago" %><br/>
+            <small><%= download.created_at %></small>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate downloads, class: "uk-pagination", next_label: ">", previous_label: "<" %>
+<% end %>

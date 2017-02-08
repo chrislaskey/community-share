@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :document_tags, path: "document-tags", only: [:show]
+  resources :downloads
   resources :memberships
   resources :tags
 

@@ -5,7 +5,10 @@ class DocumentsController < ApplicationController
   before_action :find_tags, except: [:show, :destroy]
 
   def index
-    @documents = Document.in_community(current_community).paginate(page: params[:page]).order(:name)
+    @documents = Document
+      .in_community(current_community)
+      .paginate(page: params[:page])
+      .order(:name)
   end
 
   def show
