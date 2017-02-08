@@ -34,4 +34,8 @@ class Document < ApplicationRecord
     self.slug = name.parameterize
   end
 
+  Paperclip.interpolates :community do |attachment, style|
+    attachment.instance.community.slug
+  end
+
 end

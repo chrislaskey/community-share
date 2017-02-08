@@ -89,7 +89,7 @@ Rails.application.configure do
   # Paperclip gem
   config.paperclip_defaults = {
     hash_secret: ENV.fetch("PAPERCLIP_HASH_SECRET"),
-    path: "/:class/:attachment/:hash/:style/:filename",
+    path: "/:community/:class/:attachment/:hash/:style/:filename",
     storage: :s3,
     s3_host_name: ENV.fetch("AWS_S3_HOST_NAME"),
     s3_region: ENV.fetch("AWS_S3_REGION"),
