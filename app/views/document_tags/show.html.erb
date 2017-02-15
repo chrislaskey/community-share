@@ -19,5 +19,6 @@
     <h3>Related to <%= @tag.name %></h3>
 
     <%= render "documents/documents", documents: @documents %>
+    <%= render "documents/documents_404" if @documents.empty? %>
   </div>
 </div>

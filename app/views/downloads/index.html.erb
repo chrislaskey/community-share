@@ -11,5 +11,6 @@
 <div class="page-main">
   <div class="page-content">
     <%= render "downloads/downloads", show_document: true %>
+    <%= render "documents/documents_404" if @downloads.empty? %>
   </div>
 </div>
