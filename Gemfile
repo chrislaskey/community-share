@@ -18,8 +18,13 @@ gem "aws-sdk", "~> 2.0"
 gem "will_paginate", "~> 3.1.0"
 
 group :development, :test do
-  gem "puma", "~> 3.0"
   gem "byebug", platform: :mri
+  gem "puma", "~> 3.0"
+  gem "rspec-core"
+  gem "rspec-expectations"
+  gem "rspec-mocks"
+  gem "rspec-rails"
+  gem "rspec-support"
 end
 
 group :development do
