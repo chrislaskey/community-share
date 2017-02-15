@@ -1,6 +1,6 @@
 class Membership < ApplicationRecord
 
-  ROLES = %w(admin member pending)
+  ROLES = %w(admin editor contributor member pending)
   DEFAULT_ROLE = "pending"
   DEFAULT_COMMUNITY_ROLE = "member"
 
