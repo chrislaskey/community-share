@@ -28,6 +28,10 @@ class Document < ApplicationRecord
 
   before_validation :create_slug
 
+  def created_by?(current_user)
+    user == current_user
+  end
+
   private
 
   def create_slug

@@ -54,6 +54,11 @@ class DocumentsController < ApplicationController
       return render "edit"
     end
 
+    if has_role?(:contributor) && @document.created_by?(current_user)
+      flash[:error] = "Contributors can only update records they have created"
+      return redirect_to document_path(@document)
+    end
+
     if @document.update_attributes(permitted_params)
       flash[:success] = "Successfully updated #{@document.name}"
       redirect_to @document
@@ -66,6 +71,11 @@ class DocumentsController < ApplicationController
   def destroy
     if is_type? :read_only
       return flash[:notice] = "Current community is read only"
+    end
+
+    if has_role?(:contributor) && @document.created_by?(current_user)
+      flash[:error] = "Contributors can only delete records they have created"
+      return redirect_to document_path(@document)
     end
 
     @document.destroy

@@ -3,11 +3,13 @@
     <h1>Document</h1>
   </div>
   <div class="page-actions">
-    <a href="<%= edit_document_path(@document) %>" class="uk-button uk-button-link">
-      <span uk-icon="icon: file-edit"></span>
-      Edit
-    </a>
-    <% if has_role? :admin %>
+    <% if has_role?(:admin, :editor) || (has_role?(:contributor) && @document.created_by?(current_user)) %>
+      <a href="<%= edit_document_path(@document) %>" class="uk-button uk-button-link">
+        <span uk-icon="icon: file-edit"></span>
+        Edit
+      </a>
+    <% end %>
+    <% if has_role?(:admin, :editor) || (has_role?(:contributor) && @document.created_by?(current_user)) %>
       <a href="<%= document_path(@document) %>" data-confirm="Are you sure?" data-method="delete" class="uk-button uk-button-link">
         <span uk-icon="icon: trash"></span>
         Delete
