@@ -24,10 +24,16 @@ Metrics/MethodLength:
 Performance/Casecmp:
   Enabled: false
 
+Style/BlockComments:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   Enabled: false
 
 Style/Documentation:
+  Enabled: false
+
+Style/EmptyLinesAroundBlockBody:
   Enabled: false
 
 Style/EmptyLinesAroundClassBody:
