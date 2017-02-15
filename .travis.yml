@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - 2.4
+bundler_args: --without production
+script:
+ - bundle exec rails test test/
+ - bundle exec rubocop
