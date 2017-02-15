@@ -54,14 +54,65 @@
         }
       }
     }
+
+    .heading {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 2rem;
+      font-weight: 800;
+      padding-top: 160px;
+      text-align: center;
+    }
+
+    .subheading {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.25rem;
+      text-align: center;
+    }
+  }
+
+  .page-home-about {
+    background-color: #f4f4f4;
+    display: none;
+    padding: 60px 30px;
   }
 
   .page-home-features {
-    background-color: #f4f4f4;
+    background-color: #fff;
     padding: 60px 30px;
 
     .home-features-table {
       text-align: center;
+
+      & > div {
+        padding: 0px 45px;
+      }
+
+      .icon {
+        margin: 0 0 10px 0;
+      }
+
+      .headline {
+        color: #181818;
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  .page-home-faq {
+    background-color: #704aa2;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 60px 30px;
+
+    .page-home-heading {
+      float: left;
+      margin-right: 30px;
+      width: 30%;
+
+      h2 {
+        color: rgba(255, 255, 255, 0.95);
+        text-align: left;
+        width: 100%;
+      }
     }
   }
 
@@ -118,7 +169,6 @@
         }
 
         .trial {
-          // color: rgba(0, 0, 0, 0.5);
           font-size: 0.875rem;
           margin: 1rem 0px;
 
@@ -130,13 +180,6 @@
 
       .home-pricing-first {
         background: #f4f4f4;
-
-        // .action a {
-        //   background: none;
-        //   border: 2px solid #9d1e9e;
-        //   color: #333;
-        //   padding: 12px 45px;
-        // }
       }
 
       .home-pricing-second {
@@ -146,12 +189,6 @@
 
       .home-pricing-third {
 
-//         .action a {
-//           background: none;
-//           border: 2px solid #9d1e9e;
-//           color: #333;
-//           padding: 12px 45px;
-//         }
       }
     }
   }

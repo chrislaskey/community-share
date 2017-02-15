@@ -6,13 +6,19 @@
       </div>
       <ul class="uk-navbar-nav page-home-nav">
         <li>
+          <a href="#home-about" uk-scroll>About</a>
+        </li>
+        <li>
           <a href="#home-features" uk-scroll>Features</a>
+        </li>
+        <li>
+          <a href="#home-faq" uk-scroll>FAQ</a>
         </li>
         <li>
           <a href="#home-pricing" uk-scroll>Pricing</a>
         </li>
         <li>
-          <a href="#home-help" uk-scroll>Help</a>
+          <a href="#home-support" uk-scroll>Support</a>
         </li>
         <li>
           <a class="login-link" href="<%= user_facebook_omniauth_authorize_path %>">
@@ -22,6 +28,24 @@
         </li>
       </ul>
     </div>
+    <div class="heading">Welcome to Community Share</div>
+    <div class="subheading">Organize and Share Files in Your Community</div>
+  </div>
+
+  <div class="page-home-about" id="home-about">
+    <div class="page-home-heading">
+      <h2 class="uk-text-center uk-heading-line">
+        <span>About</span>
+      </h2>
+    </div>
+
+    <ul>
+      <li>Private</li>
+      <li>Fast</li>
+      <li>Secure</li>
+      <li>Simple</li>
+      <li>Facebook Integration</li>
+    </ul>
   </div>
 
   <div class="page-home-features" id="home-features">
@@ -32,33 +56,60 @@
     </div>
 
     <div class="home-features-table uk-child-width-expand" uk-grid>
-      <div>
-        File Uploads
+      <div class="feature">
+        <div class="icon"><span uk-icon="icon: cloud-upload; ratio: 1.5"></span></div>
+        <div class="headline">File Uploads</div>
+        <div class="description">Upload documents and images</div>
       </div>
-      <div>
-        Dynamic Tags
+      <div class="feature">
+        <div class="icon"><span uk-icon="icon: tag; ratio: 1.5"></span></div>
+        <div class="headline">Stay Organized</div>
+        <div class="description">Add tags and group files for easy access</div>
       </div>
-      <div>
-        Facebook Groups
+      <div class="feature">
+        <div class="icon"><span uk-icon="icon: lock; ratio: 1.5"></span></div>
+        <div class="headline">Secure Storage</div>
+        <div class="description">Files are stored securely and backed up</div>
       </div>
-      <div>
-        User Management
+      <div class="feature">
+        <div class="icon"><span uk-icon="icon: bolt; ratio: 1.5"></span></div>
+        <div class="headline">Fast Access</div>
+        <div class="description">Files are available globally for fast access</div>
       </div>
     </div>
     <div class="home-features-table uk-child-width-expand" uk-grid>
-      <div>
-        Secure Storage
+      <div class="feature">
+        <div class="icon"><span uk-icon="icon: users; ratio: 1.5"></span></div>
+        <div class="headline">User Management</div>
+        <div class="description">Controls to easily manage is a member of your community</div>
       </div>
-      <div>
-        Usage Metrics
+      <div class="feature">
+        <div class="icon"><span uk-icon="icon: star; ratio: 1.5"></span></div>
+        <div class="headline">Membership Levels</div>
+        <div class="description">Manage who can add, edit, tag and remove files</div>
       </div>
-      <div>
-        Membership Levels
+      <div class="feature">
+        <div class="icon"><span uk-icon="icon: facebook; ratio: 1.5"></span></div>
+        <div class="headline">Facebook Groups</div>
+        <div class="description">Integrate with your Facebook group</div>
       </div>
-      <div>
-        Revision History
+      <div class="feature">
+        <div class="icon"><span uk-icon="icon: lifesaver; ratio: 1.5"></span></div>
+        <div class="headline">Usage Metrics</div>
+        <div class="description">Learn more about how files are being accessed</div>
       </div>
     </div>
+  </div>
+
+  <div class="page-home-faq" id="home-faq">
+    <div class="page-home-heading">
+      <h2 class="uk-text-center">
+        <span>Frequently Asked Questions</span>
+      </h2>
+    </div>
+
+    <div><strong>Do I need a Facebook Login?</strong></div>
+    <div>Yes! Facebook is a leader in building strong communities. Using Facebook logins guarantees a safe and secure place to share within your community.</div>
   </div>
 
   <div class="page-home-pricing" id="home-pricing">
@@ -77,6 +128,7 @@
         </div>
         <div class="features">Up to 5 Users</div>
         <div class="features">Up to 30 Files / 100 MB</div>
+        <div class="features">5GB Transfer</div>
       </div>
       <div class="home-pricing-card home-pricing-second">
         <div class="plan">Community</div>
@@ -87,6 +139,7 @@
         </div>
         <div class="features">Up to 30 Users</div>
         <div class="features">Up to 300 Files / 10 GB</div>
+        <div class="features">30GB Transfer</div>
         <div class="trial">
           <div>30 Day Free Trial</div>
           <div>No Credit Card Required</div>
@@ -101,7 +154,7 @@
         </div>
         <div class="features"><strong>Unlimited</strong> Users</div>
         <div class="features"><strong>Unlimited</strong> Files / 50 GB</div>
-        <div class="features">File History</div>
+        <div class="features">80GB Transfer</div>
         <div class="features">Usage Metrics</div>
         <div class="trial">
           <div>30 Day Free Trial</div>
