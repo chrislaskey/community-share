@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action ->{ require_role :admin, :editor }
+  before_action -> { require_role :admin, :editor }
   before_action :find_tag, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -17,7 +17,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    if is_type? :read_only
+    if community_type? :read_only
       flash[:notice] = "Current community is read only"
       return redirect_to tags_path
     end
@@ -35,11 +35,10 @@ class TagsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-    if is_type? :read_only
+    if community_type? :read_only
       flash[:notice] = "Current community is read only"
       return render "edit"
     end
@@ -54,7 +53,7 @@ class TagsController < ApplicationController
   end
 
   def destroy
-    if is_type? :read_only
+    if community_type? :read_only
       return flash[:notice] = "Current community is read only"
     end
 

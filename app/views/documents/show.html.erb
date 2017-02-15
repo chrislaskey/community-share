@@ -3,13 +3,13 @@
     <h1>Document</h1>
   </div>
   <div class="page-actions">
-    <% if has_role?(:admin, :editor) || (has_role?(:contributor) && @document.created_by?(current_user)) %>
+    <% if role?(:admin, :editor) || (role?(:contributor) && @document.created_by?(current_user)) %>
       <a href="<%= edit_document_path(@document) %>" class="uk-button uk-button-link">
         <span uk-icon="icon: file-edit"></span>
         Edit
       </a>
     <% end %>
-    <% if has_role?(:admin, :editor) || (has_role?(:contributor) && @document.created_by?(current_user)) %>
+    <% if role?(:admin, :editor) || (role?(:contributor) && @document.created_by?(current_user)) %>
       <a href="<%= document_path(@document) %>" data-confirm="Are you sure?" data-method="delete" class="uk-button uk-button-link">
         <span uk-icon="icon: trash"></span>
         Delete
@@ -47,7 +47,7 @@
     <p><strong>File Size</strong></p>
     <%= @document.file_file_size %>
 
-    <% if has_role?(:admin) && @document.downloads.present? %>
+    <% if role?(:admin) && @document.downloads.present? %>
       <h3>Document Downloads</h3>
 
       <%= render "downloads/downloads", downloads: @document.downloads.paginate(page: params[:page]), show_document: false %>

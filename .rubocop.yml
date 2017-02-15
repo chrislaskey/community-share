@@ -1,8 +1,58 @@
 AllCops:
-  Excludes:
-    - db/schema.rb
+  Exclude:
+    - bin/*
+    - db/*
     - db/migrate/*
-  DisabledByDefault: true
+  DisabledByDefault: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 15
+
+Performance/Casecmp:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyLinesAroundClassBody:
+  Enabled: true
+  Include:
+    - app
+  SupportedStyles: empty_lines
+
+Style/HashSyntax:
+  Enabled: true
+  Include:
+    - app
+    - test
+
+Style/Lambda:
+  Enabled: false
+
+Style/MultilineMethodCallIndentation:
+  Enabled: false
+
+Style/MutableConstant:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
 
 Style/StringLiterals:
   Enabled: true

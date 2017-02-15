@@ -12,13 +12,12 @@ class DocumentsController < ApplicationController
   end
 
   def show
-
   end
 
   def download
     Download.create(document: @document, user: current_user, community: current_community)
 
-    return redirect_to @document.file.url
+    redirect_to @document.file.url
   end
 
   def new
@@ -26,7 +25,7 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    if is_type? :read_only
+    if community_type? :read_only
       flash[:notice] = "Current community is read only"
       return redirect_to documents_path
     end
@@ -45,16 +44,15 @@ class DocumentsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-    if is_type? :read_only
+    if community_type? :read_only
       flash[:notice] = "Current community is read only"
       return render "edit"
     end
 
-    if has_role?(:contributor) && @document.created_by?(current_user)
+    if role?(:contributor) && @document.created_by?(current_user)
       flash[:error] = "Contributors can only update records they have created"
       return redirect_to document_path(@document)
     end
@@ -69,11 +67,11 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-    if is_type? :read_only
+    if community_type? :read_only
       return flash[:notice] = "Current community is read only"
     end
 
-    if has_role?(:contributor) && @document.created_by?(current_user)
+    if role?(:contributor) && @document.created_by?(current_user)
       flash[:error] = "Contributors can only delete records they have created"
       return redirect_to document_path(@document)
     end

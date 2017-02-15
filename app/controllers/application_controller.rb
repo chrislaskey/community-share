@@ -6,17 +6,17 @@ class ApplicationController < ActionController::Base
     @current_community ||= Community.first
   end
 
-  def has_role?(*roles)
+  def role?(*roles)
     return false unless current_user.present?
     return false unless current_user.memberships.present?
     current_user.role(current_community).to_sym.in? roles
   end
 
   def require_role(*roles)
-    return render file: "public/404.html", status: 404, layout: false unless has_role?(*roles)
+    return render file: "public/404.html", status: 404, layout: false unless role?(*roles)
   end
 
-  def is_type?(*types)
+  def community_type?(*types)
     return false unless current_community.present?
     current_community.subscription_type.to_sym.in? types
   end
@@ -27,6 +27,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_community
   helper_method :current_user
-  helper_method :has_role?
+  helper_method :role?
 
 end

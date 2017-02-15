@@ -1,7 +1,7 @@
 class DownloadsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action ->{ require_role :admin }
+  before_action -> { require_role :admin }
 
   def index
     @downloads = Download

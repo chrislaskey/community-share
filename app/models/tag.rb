@@ -7,8 +7,8 @@ class Tag < ApplicationRecord
 
   validates :category, presence: true
   validates :community, presence: true
-  validates :name, uniqueness: {scope: :category}
-  validates :slug, uniqueness: {scope: :category}
+  validates :name, uniqueness: { scope: :category }
+  validates :slug, uniqueness: { scope: :category }
 
   before_save :create_slug
 

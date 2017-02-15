@@ -6,7 +6,7 @@
     <div class="page-navbar">
       <ul class="uk-navbar-nav uk-visible@m">
         <li><%= link_to "Documents", documents_path %></li>
-        <% if has_role? :admin %>
+        <% if role? :admin %>
           <li><%= link_to "Tags", tags_path %></li>
           <li><%= link_to "Downloads", downloads_path %></li>
           <li><%= link_to "Members", memberships_path %></li>

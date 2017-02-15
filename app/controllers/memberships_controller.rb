@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
 
-  before_action ->{ require_role :admin }
+  before_action -> { require_role :admin }
   before_action :authenticate_user!
   before_action :find_membership, only: [:show, :edit, :update, :destroy]
 
@@ -9,7 +9,6 @@ class MembershipsController < ApplicationController
   end
 
   def show
-
   end
 
   def new
@@ -17,7 +16,7 @@ class MembershipsController < ApplicationController
   end
 
   def create
-    if is_type? :read_only
+    if community_type? :read_only
       flash[:notice] = "Current community is read only"
       return render "new"
     end
@@ -38,11 +37,10 @@ class MembershipsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
-    if is_type? :read_only
+    if community_type? :read_only
       flash[:notice] = "Current community is read only"
       return render "edit"
     end
@@ -62,12 +60,12 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
-    if is_type? :read_only
+    if community_type? :read_only
       flash[:notice] = "Current community is read only"
       return redirect_to memberships_path
     end
 
-    if is_current_user?
+    if current_user?
       flash[:error] = "Can not remove own membership"
       return redirect_to memberships_path
     end
@@ -92,12 +90,12 @@ class MembershipsController < ApplicationController
     params.require(:user).permit(:email, :name)
   end
 
-  def is_current_user?
+  def current_user?
     @membership.user == current_user
   end
 
   def updating_own_role?
-    is_current_user? && current_user.role(current_community) != params[:membership][:role]
+    current_user? && current_user.role(current_community) != params[:membership][:role]
   end
 
 end

@@ -3,7 +3,7 @@
     <h1>Documents</h1>
   </div>
   <div class="page-actions">
-    <% if has_role?(:admin, :editor, :contributor) %>
+    <% if role?(:admin, :editor, :contributor) %>
       <a href="<%= new_document_path %>" class="uk-button uk-button-link">
         <span uk-icon="icon: plus"></span>
         New Document

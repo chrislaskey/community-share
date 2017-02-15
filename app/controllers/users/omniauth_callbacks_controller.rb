@@ -43,7 +43,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def update_memberships
-
   end
 
 end
