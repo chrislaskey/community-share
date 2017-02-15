@@ -1,4 +1,7 @@
 AllCops:
+  Excludes:
+    - db/schema.rb
+    - db/migrate/*
   DisabledByDefault: true
 
 Style/StringLiterals:
