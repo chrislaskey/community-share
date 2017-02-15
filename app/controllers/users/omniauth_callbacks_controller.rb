@@ -10,7 +10,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
     else
-      flash[:error] = ["An error occured while trying to log in with Facebook"]
+      flash[:error] = "An error occured while trying to log in with Facebook"
       redirect_to root_path
     end
   end

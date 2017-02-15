@@ -26,12 +26,17 @@ class DocumentsController < ApplicationController
   end
 
   def create
+    if is_type? :read_only
+      flash[:notice] = "Current community is read only"
+      return redirect_to documents_path
+    end
+
     @document = Document.new(permitted_params)
     @document.community = current_community
     @document.user = current_user
 
     if @document.save
-      flash[:success] = ["Successfully created #{@document.name}"]
+      flash[:success] = "Successfully created #{@document.name}"
       redirect_to @document
     else
       flash[:error] = @document.errors.full_messages
@@ -44,8 +49,13 @@ class DocumentsController < ApplicationController
   end
 
   def update
+    if is_type? :read_only
+      flash[:notice] = "Current community is read only"
+      return render "edit"
+    end
+
     if @document.update_attributes(permitted_params)
-      flash[:success] = ["Successfully updated #{@document.name}"]
+      flash[:success] = "Successfully updated #{@document.name}"
       redirect_to @document
     else
       flash[:error] = @document.errors.full_messages
@@ -54,9 +64,13 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
+    if is_type? :read_only
+      return flash[:notice] = "Current community is read only"
+    end
+
     @document.destroy
 
-    flash[:success] = ["Successfully deleted #{@document.name}"]
+    flash[:success] = "Successfully deleted #{@document.name}"
     redirect_to documents_path
   end
 

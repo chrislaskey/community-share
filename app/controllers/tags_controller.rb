@@ -17,11 +17,16 @@ class TagsController < ApplicationController
   end
 
   def create
+    if is_type? :read_only
+      flash[:notice] = "Current community is read only"
+      return redirect_to tags_path
+    end
+
     @tag = Tag.new(permitted_params)
     @tag.community = current_community
 
     if @tag.save
-      flash[:success] = ["Successfully created #{@tag.name}"]
+      flash[:success] = "Successfully created #{@tag.name}"
       redirect_to @tag
     else
       flash[:error] = @tag.errors.full_messages
@@ -34,8 +39,13 @@ class TagsController < ApplicationController
   end
 
   def update
+    if is_type? :read_only
+      flash[:notice] = "Current community is read only"
+      return render "edit"
+    end
+
     if @tag.update_attributes(permitted_params)
-      flash[:success] = ["Successfully updated #{@tag.name}"]
+      flash[:success] = "Successfully updated #{@tag.name}"
       redirect_to @tag
     else
       flash[:error] = @tag.errors.full_messages
@@ -44,9 +54,13 @@ class TagsController < ApplicationController
   end
 
   def destroy
+    if is_type? :read_only
+      return flash[:notice] = "Current community is read only"
+    end
+
     @tag.destroy
 
-    flash[:success] = ["Successfully deleted #{@tag.name}"]
+    flash[:success] = "Successfully deleted #{@tag.name}"
     redirect_to tags_path
   end
 

@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 communities = [
-  { name: "Default", slug: "default" }
+  { name: "Demo", slug: "demo", subscription_type: "read_only" }
 ]
 
 communities.map do |community|

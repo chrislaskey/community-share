@@ -1,7 +1,8 @@
-<% if [:error, :success].any? {|type| flash[type].present? } %>
+<% if [:error, :notice, :success].any? {|type| type.present? } %>
   <div class="page-alerts">
 
     <% if flash[:error].present? %>
+      <% flash[:error] = [flash[:error]] unless flash[:error].kind_of? Array %>
       <% flash[:error].map do |message| %>
         <div class="uk-alert-danger" uk-alert>
           <%= message %>
@@ -10,7 +11,18 @@
       <% end %>
     <% end %>
 
+    <% if flash[:notice].present? %>
+      <% flash[:notice] = [flash[:notice]] unless flash[:notice].kind_of? Array %>
+      <% flash[:notice].map do |message| %>
+        <div class="uk-alert-primary" uk-alert>
+          <%= message %>
+          <a class="uk-alert-close" uk-close></a>
+        </div>
+      <% end %>
+    <% end %>
+
     <% if flash[:success].present? %>
+      <% flash[:success] = [flash[:success]] unless flash[:success].kind_of? Array %>
       <% flash[:success].map do |message| %>
         <div class="uk-alert-success" uk-alert>
           <%= message %>

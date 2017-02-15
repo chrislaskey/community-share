@@ -20,8 +20,10 @@ ActiveRecord::Schema.define(version: 20170204181208) do
     t.string   "name"
     t.string   "slug"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "subscription_type"
+    t.datetime "subscription_start"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.index ["uid"], name: "index_communities_on_uid", using: :btree
   end
 

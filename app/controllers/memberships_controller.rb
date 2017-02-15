@@ -17,6 +17,11 @@ class MembershipsController < ApplicationController
   end
 
   def create
+    if is_type? :read_only
+      flash[:notice] = "Current community is read only"
+      return render "new"
+    end
+
     @user = User.find_or_create_by(permitted_user_params)
     @membership = Membership.new(permitted_membership_params)
 
@@ -24,7 +29,7 @@ class MembershipsController < ApplicationController
     @membership.user = @user
 
     if @membership.save
-      flash[:success] = ["Successfully created #{@membership.user.email}"]
+      flash[:success] = "Successfully created #{@membership.user.email}"
       redirect_to memberships_path
     else
       flash[:error] = @membership.errors.full_messages
@@ -37,13 +42,18 @@ class MembershipsController < ApplicationController
   end
 
   def update
+    if is_type? :read_only
+      flash[:notice] = "Current community is read only"
+      return render "edit"
+    end
+
     if updating_own_role?
-      flash[:error] = ["Can not modify own role"]
+      flash[:error] = "Can not modify own role"
       return render "edit"
     end
 
     if @membership.update_attributes(permitted_membership_params)
-      flash[:success] = ["Successfully updated #{@membership.user.email}"]
+      flash[:success] = "Successfully updated #{@membership.user.email}"
       redirect_to memberships_path
     else
       flash[:error] = @membership.errors.full_messages
@@ -52,14 +62,19 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
+    if is_type? :read_only
+      flash[:notice] = "Current community is read only"
+      return redirect_to memberships_path
+    end
+
     if is_current_user?
-      flash[:error] = ["Can not remove own membership"]
+      flash[:error] = "Can not remove own membership"
       return redirect_to memberships_path
     end
 
     @membership.destroy
 
-    flash[:success] = ["Successfully deleted #{@membership.user.email}"]
+    flash[:success] = "Successfully deleted #{@membership.user.email}"
     redirect_to memberships_path
   end
 
