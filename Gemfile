@@ -19,18 +19,19 @@ gem "will_paginate", "~> 3.1.0"
 
 group :development, :test do
   gem "byebug", platform: :mri
+  gem "pry-rails"
   gem "puma", "~> 3.0"
   gem "rspec-core"
   gem "rspec-expectations"
   gem "rspec-mocks"
   gem "rspec-rails"
   gem "rspec-support"
+  gem "shoulda-matchers", "~> 3.1"
 end
 
 group :development do
   gem "web-console", ">= 3.3.0"
   gem "listen", "~> 3.0.5"
-  gem "pry-rails"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "rubocop", require: false

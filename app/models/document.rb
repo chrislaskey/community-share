@@ -35,7 +35,7 @@ class Document < ApplicationRecord
   private
 
   def create_slug
-    self.slug = name.parameterize
+    self.slug = name.parameterize if name.present?
   end
 
   Paperclip.interpolates :community do |attachment, _style|
