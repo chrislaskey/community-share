@@ -48,6 +48,9 @@ Style/HashSyntax:
     - app
     - test
 
+Style/ColonMethodCall:
+  Enabled: false
+
 Style/Lambda:
   Enabled: false
 
