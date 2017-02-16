@@ -5,7 +5,7 @@ FactoryGirl.define do
     user
     name { Faker::Name.name }
     slug { Faker::Internet.slug }
-    description { Faker::RickAndMorty.quote }
+    description { Faker::Name.name }
     file_file_name { Faker::Name.name }
     file_content_name { Faker::Internet.domain_name }
     file_file_size { 1024 * 1024 * SecureRandom::rand(1..100) }

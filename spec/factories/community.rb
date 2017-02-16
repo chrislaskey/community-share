@@ -4,7 +4,7 @@ FactoryGirl.define do
     uid { SecureRandom::uuid }
     name { Faker::Name.name }
     slug { Faker::Internet.slug }
-    description { Faker::RickAndMorty.quote }
+    description { Faker::Name.name }
     subscription_type "premium"
     subscription_start { Time.now }
     created_at { Time.now }
