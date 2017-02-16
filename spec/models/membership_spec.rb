@@ -30,7 +30,6 @@ RSpec.describe Membership, type: :model do
     end
 
     describe "user" do
-      let(:user) { membership.user }
       let(:other_membership) { build(:membership, user: membership.user, community: membership.community) }
 
       it "cannot have more than one membership in a community" do
