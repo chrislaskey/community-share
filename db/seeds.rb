@@ -31,7 +31,7 @@ tags.map do |tag|
   Tag.find_or_create_by!(tag)
 end
 
-ENV["ADMIN_USER_EMAILS"].split(",").map do |email|
+(ENV["ADMIN_USER_EMAILS"] || "").split(",").map do |email|
   user = User.find_or_create_by!(
     email: email
   )
