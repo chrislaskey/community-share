@@ -20,5 +20,5 @@ Rails.application.routes.draw do
   resources :memberships
   resources :tags
 
-  root to: redirect("/login")
+  root to: "home#index"
 end
