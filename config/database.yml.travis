@@ -1,3 +1,5 @@
 test:
   adapter: postgresql
+  username: postgres
+  password:
   database: community_share_test
