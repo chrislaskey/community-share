@@ -26,8 +26,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def find_user
-    @user = User.find_or_initialize_by(
-      uid: user_data.uid
+    @user = User.find_by(uid: user_data.uid) || User.find_or_initialize_by(
+      email: user_data.info.email
     )
   end
 
