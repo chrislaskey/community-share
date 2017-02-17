@@ -1,0 +1,22 @@
+<%= form_for @community do |form| %>
+
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name, class: "uk-input" %>
+  </p>
+
+  <p>
+    <%= form.label :facebook_group_id %><br>
+    <%= form.text_field :uid, class: "uk-input" %>
+  </p>
+
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description, class: "uk-textarea" %>
+  </p>
+
+  <p>
+    <%= form.submit class: "uk-button uk-button-default" %>
+  </p>
+
+<% end %>
