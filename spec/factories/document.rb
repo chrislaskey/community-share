@@ -4,7 +4,7 @@ FactoryGirl.define do
     community
     user
     name { Faker::Name.name }
-    slug { Faker::Internet.slug }
+    sequence(:slug) { |i| "#{Faker::Internet.slug}-#{i}" }
     description { Faker::Name.name }
     file_file_name { Faker::Name.name }
     file_content_type "application/pdf"
