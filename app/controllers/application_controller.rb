@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
 
   def community_type?(*types)
     return false unless current_community.present?
-    current_community.subscription_type.to_sym.in? types
+    return false unless current_community.level.present?
+    current_community.level.slug.to_sym.in? types
   end
 
   def require_community_type(*types)

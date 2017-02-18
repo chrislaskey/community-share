@@ -10,23 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170204181208) do
+ActiveRecord::Schema.define(version: 20170218190205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "communities", force: :cascade do |t|
+    t.boolean  "read_only"
     t.integer  "uid"
     t.string   "name"
     t.string   "slug"
     t.text     "description"
-    t.string   "subscription_type"
-    t.datetime "subscription_start"
-    t.boolean  "read_only"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["uid"], name: "index_communities_on_uid", using: :btree
+  end
+
+  create_table "community_levels", force: :cascade do |t|
+    t.string  "name"
+    t.string  "slug"
+    t.integer "file_count_limit"
+    t.bigint  "file_size_limit"
+    t.integer "membership_count_limit"
+    t.index ["slug"], name: "index_community_levels_on_slug", using: :btree
+  end
+
+  create_table "community_subscriptions", force: :cascade do |t|
+    t.integer  "community_id"
+    t.integer  "community_level_id"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.index ["subscription_type"], name: "index_communities_on_subscription_type", using: :btree
-    t.index ["uid"], name: "index_communities_on_uid", using: :btree
+    t.index ["community_id", "community_level_id"], name: "index_subscriptions_by_community_and_level", using: :btree
+    t.index ["community_id"], name: "index_community_subscriptions_on_community_id", using: :btree
+    t.index ["community_level_id"], name: "index_community_subscriptions_on_community_level_id", using: :btree
+    t.index ["end_at"], name: "index_community_subscriptions_on_end_at", using: :btree
+    t.index ["start_at"], name: "index_community_subscriptions_on_start_at", using: :btree
   end
 
   create_table "document_tags", force: :cascade do |t|
