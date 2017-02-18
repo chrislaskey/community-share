@@ -4,6 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     find_user
     update_user
     update_memberships
+    flash.discard
 
     session["devise.facebook_data"] = user_data
 

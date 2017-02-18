@@ -2,6 +2,7 @@ class DocumentsController < ApplicationController
 
   before_action :authenticate_user!
   before_action -> { reject_role :suspended }
+  before_action :require_community
   before_action :find_document, only: [:show, :download, :edit, :update, :destroy]
   before_action :find_tags, except: [:show, :destroy]
 

@@ -15,5 +15,6 @@
 <div class="page-main">
   <div class="page-content">
     <%= render "tags/tags" %>
+    <%= render "tags/tags_404" if @tags.empty? %>
   </div>
 </div>

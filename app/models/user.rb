@@ -23,7 +23,10 @@ class User < ApplicationRecord
   end
 
   def current_community
-    (memberships.detect(&:current) || memberships.last).community
+    membership = memberships.detect(&:current)
+    membership ||= memberships.last
+    membership ||= Membership.new
+    membership.community
   end
 
   private

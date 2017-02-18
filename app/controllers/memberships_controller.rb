@@ -1,7 +1,8 @@
 class MembershipsController < ApplicationController
 
-  before_action -> { require_role :admin }
   before_action :authenticate_user!
+  before_action -> { require_role :admin }
+  before_action :require_community
   before_action :find_membership, only: [:show, :edit, :update, :destroy]
 
   def index

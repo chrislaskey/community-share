@@ -2,6 +2,7 @@ class CommunitiesController < ApplicationController
 
   before_action :authenticate_user!
   before_action -> { require_role :admin }, only: [:edit, :update]
+  before_action :require_community, only: [:edit, :update]
   before_action :find_community
 
   def index

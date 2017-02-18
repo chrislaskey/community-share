@@ -7,6 +7,23 @@ class ApplicationController < ActionController::Base
     @current_community ||= current_user.current_community
   end
 
+  def read_only?
+    current_community.read_only
+  end
+
+  def community_type?(*types)
+    return false unless current_community.present?
+    current_community.subscription_type.to_sym.in? types
+  end
+
+  def require_community_type?(*types)
+    return render file: "public/404.html", status: 404, layout: false unless community_type?(*types)
+  end
+
+  def require_community
+    return redirect_to user_log_out_path unless current_community.present?
+  end
+
   def role?(*roles)
     return false unless current_user.present?
     return false unless current_user.memberships.present?
@@ -19,19 +36,6 @@ class ApplicationController < ActionController::Base
 
   def reject_role(*roles)
     return render file: "public/404.html", status: 404, layout: false if role?(*roles)
-  end
-
-  def community_type?(*types)
-    return false unless current_community.present?
-    current_community.subscription_type.to_sym.in? types
-  end
-
-  def read_only?
-    current_community.read_only
-  end
-
-  def require_type?(*types)
-    return render file: "public/404.html", status: 404, layout: false unless has_type?(*types)
   end
 
   helper_method :current_community

@@ -2,6 +2,7 @@ class TagsController < ApplicationController
 
   before_action :authenticate_user!
   before_action -> { require_role :admin, :editor }
+  before_action :require_community
   before_action :find_tag, only: [:show, :edit, :update, :destroy]
 
   def index

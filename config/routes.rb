@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    delete "sign_out", to: "devise/sessions#destroy", as: :user_log_out
+    match "sign_out", to: "devise/sessions#destroy", via: [:delete, :get], as: :user_log_out
   end
 
   resources :communities, only: [:index, :edit, :update] do
