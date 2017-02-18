@@ -27,7 +27,12 @@ class MembershipsController < ApplicationController
   def create
     if read_only?
       flash[:notice] = "Current community is read only"
-      return render "new"
+      return redirect_to memberships_path
+    end
+
+    if current_community.over_limit? :membership_count
+      flash[:error] = "Over the maximum membership count for the current subscription level"
+      return redirect_to memberships_path
     end
 
     @user = User.find_or_create_by(permitted_user_params)

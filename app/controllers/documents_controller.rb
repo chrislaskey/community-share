@@ -32,6 +32,16 @@ class DocumentsController < ApplicationController
       return redirect_to documents_path
     end
 
+    if current_community.over_limit? :file_count
+      flash[:error] = "Over the maximum document count for the current subscription level"
+      return redirect_to documents_path
+    end
+
+    if current_community.over_limit? :file_size
+      flash[:error] = "Over the maximum document file size for the current subscription level"
+      return redirect_to documents_path
+    end
+
     @document = Document.new(permitted_params)
     @document.community = current_community
     @document.user = current_user
