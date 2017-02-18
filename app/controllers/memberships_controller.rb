@@ -16,7 +16,7 @@ class MembershipsController < ApplicationController
   end
 
   def create
-    if community_type? :read_only
+    if read_only?
       flash[:notice] = "Current community is read only"
       return render "new"
     end
@@ -40,7 +40,7 @@ class MembershipsController < ApplicationController
   end
 
   def update
-    if community_type? :read_only
+    if read_only?
       flash[:notice] = "Current community is read only"
       return render "edit"
     end
@@ -60,7 +60,7 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
-    if community_type? :read_only
+    if read_only?
       flash[:notice] = "Current community is read only"
       return redirect_to memberships_path
     end

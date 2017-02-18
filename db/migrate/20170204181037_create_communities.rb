@@ -7,6 +7,7 @@ class CreateCommunities < ActiveRecord::Migration[5.0]
       t.text :description
       t.string :subscription_type
       t.datetime :subscription_start
+      t.boolean :read_only
 
       t.timestamps
     end

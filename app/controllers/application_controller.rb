@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
     current_community.subscription_type.to_sym.in? types
   end
 
+  def read_only?
+    current_community.read_only
+  end
+
   def require_type?(*types)
     return render file: "public/404.html", status: 404, layout: false unless has_type?(*types)
   end

@@ -11,7 +11,10 @@ class CommunitiesController < ApplicationController
       .map(&:community)
       .sort_by(&:name)
 
-    redirect_to "/documents" if @communities.length < 2
+    if @communities.length < 2
+      return redirect_to "/documents"
+    end
+
     render "index", layout: "login"
   end
 
@@ -28,7 +31,7 @@ class CommunitiesController < ApplicationController
   end
 
   def update
-    if community_type? :read_only
+    if read_only?
       flash[:notice] = "Current community is read only"
       return render "edit"
     end

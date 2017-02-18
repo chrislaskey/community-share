@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20170204181208) do
     t.text     "description"
     t.string   "subscription_type"
     t.datetime "subscription_start"
+    t.boolean  "read_only"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.index ["subscription_type"], name: "index_communities_on_subscription_type", using: :btree

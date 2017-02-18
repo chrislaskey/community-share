@@ -26,7 +26,7 @@ class DocumentsController < ApplicationController
   end
 
   def create
-    if community_type? :read_only
+    if read_only?
       flash[:notice] = "Current community is read only"
       return redirect_to documents_path
     end
@@ -48,7 +48,7 @@ class DocumentsController < ApplicationController
   end
 
   def update
-    if community_type? :read_only
+    if read_only?
       flash[:notice] = "Current community is read only"
       return render "edit"
     end
@@ -68,7 +68,7 @@ class DocumentsController < ApplicationController
   end
 
   def destroy
-    if community_type? :read_only
+    if read_only?
       return flash[:notice] = "Current community is read only"
     end
 
