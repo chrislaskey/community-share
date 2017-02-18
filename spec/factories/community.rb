@@ -1,12 +1,11 @@
 FactoryGirl.define do
 
   factory :community do
+    read_only false
     uid { SecureRandom::uuid }
     name { Faker::Name.name }
     slug { Faker::Internet.slug }
     description { Faker::Name.name }
-    subscription_type { Community::SUBSCRIPTION_TYPES.keys.last.to_s }
-    subscription_start { Time.now }
     created_at { Time.now }
     updated_at { Time.now }
   end
