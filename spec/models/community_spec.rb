@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe Community, type: :model do
 
   let(:community) { create(:community) }
+  let!(:demo_community) { create(:community, slug: "demo") }
 
   describe "associations" do
     it { is_expected.to have_many(:documents) }
@@ -23,10 +24,8 @@ RSpec.describe Community, type: :model do
 
   describe "scopes" do
     describe "demo" do
-      let!(:demo) { create(:community, slug: "demo") }
-
       it "looks up community by slug" do
-        expect(Community.demo).to eq(demo)
+        expect(Community.demo).to eq(demo_community)
       end
     end
   end
@@ -50,8 +49,6 @@ RSpec.describe Community, type: :model do
   end
 
   describe "demo?" do
-    let(:demo_community) { create(:community, slug: "demo") }
-
     it "is true if slug is demo" do
       expect(demo_community.demo?).to be_truthy
     end
