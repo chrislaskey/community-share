@@ -92,9 +92,9 @@ RSpec.describe Community, type: :model do
     let!(:subscription) { create(:community_subscription, community: community) }
 
     context "when under the limit" do
-      it { expect(community.over_limit? :file_size).to be_falsey }
-      it { expect(community.over_limit? :file_count).to be_falsey }
-      it { expect(community.over_limit? :membership_count).to be_falsey }
+      it { expect(community.over_limit?(:file_size)).to be_falsey }
+      it { expect(community.over_limit?(:file_count)).to be_falsey }
+      it { expect(community.over_limit?(:membership_count)).to be_falsey }
     end
 
     context "when over the limit" do
@@ -103,9 +103,9 @@ RSpec.describe Community, type: :model do
       let!(:membership1) { create(:membership, community: community) }
       let!(:membership2) { create(:membership, community: community) }
 
-      it { expect(community.over_limit? :file_size).to be_truthy }
-      it { expect(community.over_limit? :file_count).to be_truthy }
-      it { expect(community.over_limit? :membership_count).to be_truthy }
+      it { expect(community.over_limit?(:file_size)).to be_truthy }
+      it { expect(community.over_limit?(:file_count)).to be_truthy }
+      it { expect(community.over_limit?(:membership_count)).to be_truthy }
     end
   end
 

@@ -27,7 +27,7 @@ RSpec.describe CommunityLevel, type: :model do
     it "throws an exception if the key does not exist" do
       expect do
         community_level.limit("invalid")
-      end.to raise_exception
+      end.to raise_error(NameError)
     end
 
     it "returns the limit value" do
