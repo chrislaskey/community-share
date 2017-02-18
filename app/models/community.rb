@@ -4,6 +4,7 @@ class Community < ApplicationRecord
   has_many :users, through: :memberships
   has_many :memberships, dependent: :destroy
   has_many :community_subscriptions
+  has_many :tags
 
   alias_attribute :subscriptions, :community_subscriptions
 
@@ -33,6 +34,10 @@ class Community < ApplicationRecord
 
   def file_size
     documents.map(&:file_file_size).sum
+  end
+
+  def tag_count
+    tags.length
   end
 
   def membership_count

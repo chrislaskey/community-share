@@ -66,15 +66,17 @@ RSpec.describe Community, type: :model do
     let!(:document2) { create(:document, community: community) }
     let!(:membership1) { create(:membership, community: community) }
     let!(:membership2) { create(:membership, community: community) }
+    let!(:tag1) { create(:tag, community: community) }
+    let!(:tag2) { create(:tag, community: community) }
 
     describe "file_count" do
-      it "matches for every document relation" do
+      it "totals the number of related document files" do
         expect(community.file_count).to eq(2)
       end
     end
 
     describe "file_size" do
-      it "matches for every document relation" do
+      it "totals the size of the related document files" do
         total = document1.file_file_size + document2.file_file_size
 
         expect(community.file_size).to eq(total)
@@ -82,8 +84,14 @@ RSpec.describe Community, type: :model do
     end
 
     describe "membership_count" do
-      it "matches for every document relation" do
+      it "totals the size of the related community memberships" do
         expect(community.membership_count).to eq(2)
+      end
+    end
+
+    describe "tag_count" do
+      it "totals the size of the related tags" do
+        expect(community.tag_count).to eq(2)
       end
     end
   end
@@ -102,6 +110,8 @@ RSpec.describe Community, type: :model do
       let!(:document2) { create(:document, community: community) }
       let!(:membership1) { create(:membership, community: community) }
       let!(:membership2) { create(:membership, community: community) }
+      let!(:tag1) { create(:tag, community: community) }
+      let!(:tag2) { create(:tag, community: community) }
 
       it { expect(community.over_limit?(:file_size)).to be_truthy }
       it { expect(community.over_limit?(:file_count)).to be_truthy }

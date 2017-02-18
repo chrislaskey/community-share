@@ -6,6 +6,7 @@ class CommunityLevels < ActiveRecord::Migration[5.0]
       t.integer :file_count_limit
       t.integer :file_size_limit, limit: 8
       t.integer :membership_count_limit
+      t.integer :tag_count_limit
     end
 
     add_index :community_levels, [:slug]

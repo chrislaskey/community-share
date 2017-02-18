@@ -23,6 +23,11 @@ class TagsController < ApplicationController
       return redirect_to tags_path
     end
 
+    if current_community.over_limit? :tag_count
+      flash[:error] = "Over the maximum tag count for the current subscription level"
+      return redirect_to tags_path
+    end
+
     @tag = Tag.new(permitted_params)
     @tag.community = current_community
 

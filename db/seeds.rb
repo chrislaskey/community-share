@@ -3,6 +3,7 @@ levels = [
     name: "Starter",
     slug: "starter",
     membership_count_limit: 5,
+    tag_count_limit: 1000,
     file_count_limit: 30,
     file_size_limit: 100 * 1024 * 1024
   },
@@ -10,6 +11,7 @@ levels = [
     name: "Community",
     slug: "standard",
     membership_count_limit: 100,
+    tag_count_limit: 1000,
     file_count_limit: 300,
     file_size_limit: 3 * 1024 * 1024 * 1024
   },
@@ -17,6 +19,7 @@ levels = [
     name: "Premium",
     slug: "premium",
     membership_count_limit: 10000,
+    tag_count_limit: 1000,
     file_count_limit: 50000,
     file_size_limit: 20 * 1024 * 1024 * 1024
   }

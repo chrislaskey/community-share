@@ -61,7 +61,7 @@ class DocumentsController < ApplicationController
   def update
     if read_only?
       flash[:notice] = "Current community is read only"
-      return render "edit"
+      return render documents_path
     end
 
     if role?(:contributor) && @document.created_by?(current_user)

@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170218190205) do
     t.integer "file_count_limit"
     t.bigint  "file_size_limit"
     t.integer "membership_count_limit"
+    t.integer "tag_count_limit"
     t.index ["slug"], name: "index_community_levels_on_slug", using: :btree
   end
 
