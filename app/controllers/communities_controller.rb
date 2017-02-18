@@ -1,7 +1,7 @@
 class CommunitiesController < ApplicationController
 
   before_action :authenticate_user!
-  before_action -> { require_role :admin }
+  before_action -> { require_role :admin }, only: [:edit, :update]
   before_action :find_community
 
   def index
@@ -48,7 +48,7 @@ class CommunitiesController < ApplicationController
   private
 
   def find_community
-    @community = current_community
+    @community = Community.find(current_community.id)
   end
 
   def permitted_params

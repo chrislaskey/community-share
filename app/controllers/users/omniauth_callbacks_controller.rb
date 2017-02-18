@@ -42,7 +42,33 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     )
   end
 
+  def destroy_demo_membership
+    demo_membership = Membership.find_by(
+      community: Community.demo,
+      user: @user
+    )
+
+    demo_membership.destroy if demo_membership.present?
+  end
+
+  def create_demo_membership
+    Membership.create(
+      community: Community.demo,
+      user: @user,
+      role: Membership::ROLES.first
+    )
+  end
+
+  def set_current_membership
+    unless @user.memberships.detect(&:current)
+      @user.memberships.first.update_attributes(current: true)
+    end
+  end
+
   def update_memberships
+    destroy_demo_membership unless @user.memberships.empty?
+    create_demo_membership if @user.memberships.empty?
+    set_current_membership
   end
 
 end

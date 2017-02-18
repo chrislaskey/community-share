@@ -6,4 +6,8 @@ class Community < ApplicationRecord
   validates :name, presence: true
   validates :slug, uniqueness: true
 
+  scope :demo, -> {
+    find_by(slug: "demo")
+  }
+
 end
