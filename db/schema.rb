@@ -38,15 +38,15 @@ ActiveRecord::Schema.define(version: 20170218190205) do
   create_table "community_subscriptions", force: :cascade do |t|
     t.integer  "community_id"
     t.integer  "community_level_id"
-    t.datetime "start_at"
-    t.datetime "end_at"
+    t.datetime "started_at"
+    t.datetime "ended_at"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.index ["community_id", "community_level_id"], name: "index_subscriptions_by_community_and_level", using: :btree
     t.index ["community_id"], name: "index_community_subscriptions_on_community_id", using: :btree
     t.index ["community_level_id"], name: "index_community_subscriptions_on_community_level_id", using: :btree
-    t.index ["end_at"], name: "index_community_subscriptions_on_end_at", using: :btree
-    t.index ["start_at"], name: "index_community_subscriptions_on_start_at", using: :btree
+    t.index ["ended_at"], name: "index_community_subscriptions_on_ended_at", using: :btree
+    t.index ["started_at"], name: "index_community_subscriptions_on_started_at", using: :btree
   end
 
   create_table "document_tags", force: :cascade do |t|

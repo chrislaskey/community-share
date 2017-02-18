@@ -10,6 +10,12 @@ RSpec.describe Community, type: :model do
     it { is_expected.to have_many(:users) }
   end
 
+  describe "aliases" do
+    it "has a subscriptions alias" do
+      expect(community).to respond_to(:subscriptions)
+    end
+  end
+
   describe "validations" do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_uniqueness_of(:slug) }

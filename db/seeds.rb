@@ -37,7 +37,7 @@ end
 demo = Community.find_by(slug: "demo")
 
 subscriptions = [
-  { community: demo, community_level: CommunityLevel.find_by(slug: "premium"), start_at: Time.now }
+  { community: demo, community_level: CommunityLevel.find_by(slug: "premium"), started_at: Time.now }
 ]
 
 subscriptions.map do |subscription|

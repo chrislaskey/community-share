@@ -6,24 +6,24 @@ class CommunitySubscription < ApplicationRecord
   alias_attribute :level, :community_level
 
   validates :community, presence: true
-  validates :level, presence: true
-  validates :start_at, presence: true
+  validates :community_level, presence: true
+  validates :started_at, presence: true
 
   before_create :close_active_subscription
 
   def active
-    end_at.blank?
+    ended_at.blank?
   end
 
   private
 
   def close_active_subscription
-    return true unless end_at.blank?
+    return true unless ended_at.blank?
 
     CommunitySubscription.where(
       community: community,
-      end_at: nil
-    ).update_all(end_at: Time.now)
+      ended_at: nil
+    ).update_all(ended_at: Time.now)
   end
 
 end
