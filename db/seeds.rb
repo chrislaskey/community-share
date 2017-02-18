@@ -7,14 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 communities = [
-  { name: "Demo", slug: "demo", subscription_type: "read_only" }
+  { name: "Demo", read_only: true, slug: "demo", subscription_type: "premium" },
+  { name: "Test 1", slug: "test-1", subscription_type: "premium" },
+  { name: "Test 2", slug: "test-2", subscription_type: "premium" }
 ]
 
 communities.map do |community|
   Community.find_or_create_by!(community)
 end
 
-default = Community.first
+default = Community.last
 
 tags = [
   { community: default, category: "Education Level", name: "Pre-K" },
