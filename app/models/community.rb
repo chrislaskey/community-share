@@ -47,7 +47,7 @@ class Community < ApplicationRecord
   end
 
   def file_size
-    documents.map(&:file_file_size).sum || 0
+    documents.map(&:file_file_size).sum
   end
 
   def membership_counts
