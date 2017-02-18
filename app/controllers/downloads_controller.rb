@@ -12,7 +12,7 @@ class DownloadsController < ApplicationController
       .order(created_at: :desc)
 
     if current_community.demo?
-      @downloads  = @downloads.where(user: current_user)
+      @downloads = @downloads.where(user: current_user)
     end
   end
 
