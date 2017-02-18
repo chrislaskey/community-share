@@ -3,6 +3,7 @@ class DownloadsController < ApplicationController
   before_action :authenticate_user!
   before_action -> { require_role :admin }
   before_action :require_community
+  before_action -> { require_community_type :premium }
 
   def index
     @downloads = Download

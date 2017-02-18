@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     current_community.subscription_type.to_sym.in? types
   end
 
-  def require_community_type?(*types)
+  def require_community_type(*types)
     return render file: "public/404.html", status: 404, layout: false unless community_type?(*types)
   end
 
@@ -41,5 +41,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_community
   helper_method :current_user
   helper_method :role?
+  helper_method :community_type?
 
 end
