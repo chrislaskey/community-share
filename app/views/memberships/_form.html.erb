@@ -21,12 +21,8 @@
 
   <p>
     <%= form.label :role %><br>
-    <%
-      role = @membership.role
-      role = Membership::DEFAULT_COMMUNITY_ROLE unless @membership.persisted?
-      roles = Membership::ROLES.map{ |item| [item.titleize, item] }
-    %>
-    <%= form.select :role, options_for_select(roles, role), {}, class: "uk-select" %>
+    <% roles = Membership::ROLES.map{ |item| [item.titleize, item] } %>
+    <%= form.select :role, options_for_select(roles, @membership.role), {}, class: "uk-select" %>
   </p>
 
   <p>
