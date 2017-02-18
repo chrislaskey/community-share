@@ -10,4 +10,8 @@ class Community < ApplicationRecord
     find_by(slug: "demo")
   }
 
+  def demo?
+    slug == "demo"
+  end
+
 end

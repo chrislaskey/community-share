@@ -51,6 +51,12 @@ Style/HashSyntax:
 Style/ColonMethodCall:
   Enabled: false
 
+Style/GuardClause:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
 Style/Lambda:
   Enabled: false
 

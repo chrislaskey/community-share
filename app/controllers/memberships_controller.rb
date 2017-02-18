@@ -5,7 +5,15 @@ class MembershipsController < ApplicationController
   before_action :find_membership, only: [:show, :edit, :update, :destroy]
 
   def index
-    @memberships = Membership.includes(:user).in_community(current_community).paginate(page: params[:page]).order("role")
+    @memberships = Membership
+      .includes(:user)
+      .in_community(current_community)
+      .paginate(page: params[:page])
+      .order("role")
+
+    if current_community.demo?
+      @memberships = @memberships.where(user: current_user)
+    end
   end
 
   def show
@@ -79,6 +87,13 @@ class MembershipsController < ApplicationController
   private
 
   def find_membership
+    if current_community.demo?
+      @membership = Membership.find_by(
+        user: current_user,
+        community: current_community
+      )
+    end
+
     @membership ||= Membership.in_community(current_community).find(params[:id])
   end
 
