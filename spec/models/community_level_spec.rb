@@ -23,4 +23,16 @@ RSpec.describe CommunityLevel, type: :model do
     it { is_expected.to validate_presence_of(:membership_count_limit) }
   end
 
+  describe "limit" do
+    it "throws an exception if the key does not exist" do
+      expect do
+        community_level.limit("invalid")
+      end.to raise_exception
+    end
+
+    it "returns the limit value" do
+      expect(community_level.limit(:file_size)).to eq(community_level.file_size_limit)
+    end
+  end
+
 end
