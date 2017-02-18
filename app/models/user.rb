@@ -22,6 +22,10 @@ class User < ApplicationRecord
     membership(community).role
   end
 
+  def current_community
+    (memberships.detect(&:current) || memberships.last).community
+  end
+
   private
 
   def timeout_in

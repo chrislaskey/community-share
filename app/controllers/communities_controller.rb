@@ -4,6 +4,26 @@ class CommunitiesController < ApplicationController
   before_action -> { require_role :admin }
   before_action :find_community
 
+  def index
+    @communities = current_user
+      .memberships
+      .select(&:active)
+      .map(&:community)
+      .sort_by(&:name)
+
+    redirect_to "/documents" if @communities.length < 2
+    render "index", layout: "login"
+  end
+
+  def login
+    current_user
+      .memberships
+      .find_by!(community_id: params[:id])
+      .login
+
+    redirect_to "/documents"
+  end
+
   def edit
   end
 

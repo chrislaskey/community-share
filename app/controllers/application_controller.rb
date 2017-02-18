@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery prepend: true
 
   def current_community
-    @current_community ||= Community.first
+    return nil unless current_user
+    @current_community ||= current_user.current_community
   end
 
   def role?(*roles)

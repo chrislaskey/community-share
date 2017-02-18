@@ -12,5 +12,6 @@ class CreateCommunities < ActiveRecord::Migration[5.0]
     end
 
     add_index :communities, [:uid]
+    add_index :communities, [:subscription_type]
   end
 end

@@ -13,6 +13,18 @@ class Membership < ApplicationRecord
   after_initialize :set_role
   after_initialize :set_user
 
+  def active
+    role != "suspended"
+  end
+
+  def login
+    user.memberships.map do |membership|
+      membership.update_attributes(current: false)
+    end
+
+    update_attributes(current: true)
+  end
+
   private
 
   def set_role

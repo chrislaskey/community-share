@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170204181208) do
     t.datetime "subscription_start"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["subscription_type"], name: "index_communities_on_subscription_type", using: :btree
     t.index ["uid"], name: "index_communities_on_uid", using: :btree
   end
 
@@ -70,11 +71,13 @@ ActiveRecord::Schema.define(version: 20170204181208) do
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "community_id"
+    t.boolean  "current"
     t.string   "role"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["community_id", "user_id"], name: "index_memberships_on_community_id_and_user_id", using: :btree
     t.index ["community_id"], name: "index_memberships_on_community_id", using: :btree
+    t.index ["current"], name: "index_memberships_on_current", using: :btree
     t.index ["user_id"], name: "index_memberships_on_user_id", using: :btree
   end
 

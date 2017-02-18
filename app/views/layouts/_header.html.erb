@@ -22,6 +22,9 @@
             <div uk-dropdown>
               <ul class="uk-nav uk-nav-default">
                 <li class="uk-nav-header">Actions</li>
+                <% if current_user.communities.length > 1 %>
+                <li><%= link_to "Switch Communities", communities_path %></li>
+                <% end %>
                 <li><%= link_to "Log Out", user_log_out_path, method: :delete %></li>
               </ul>
             </div>

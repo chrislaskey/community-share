@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     delete "sign_out", to: "devise/sessions#destroy", as: :user_log_out
   end
 
-  get :login, to: "login#index"
+  resources :communities, only: [:index, :edit, :update] do
+    member do
+      get :login
+    end
+  end
 
   resources :documents do
     member do
@@ -15,11 +19,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :communities, only: [:edit, :update]
   resources :document_tags, path: "document-tags", only: [:show]
   resources :downloads
   resources :memberships
   resources :tags
+
+  get :login, to: "login#index"
 
   root to: "home#index"
 end
