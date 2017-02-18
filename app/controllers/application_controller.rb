@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     return render file: "public/404.html", status: 404, layout: false unless role?(*roles)
   end
 
+  def reject_role(*roles)
+    return render file: "public/404.html", status: 404, layout: false if role?(*roles)
+  end
+
   def community_type?(*types)
     return false unless current_community.present?
     current_community.subscription_type.to_sym.in? types
