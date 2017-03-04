@@ -6,9 +6,6 @@
       </div>
       <ul class="uk-navbar-nav page-home-nav">
         <li>
-          <a href="#home-about" uk-scroll>About</a>
-        </li>
-        <li>
           <a href="#home-features" uk-scroll>Features</a>
         </li>
         <li>
@@ -21,37 +18,26 @@
           <a href="#home-demo" uk-scroll>Live Demo</a>
         </li>
         <li>
-          <a href="#home-register" uk-scroll>Get Started</a>
+          <a class="active" href="#home-register" uk-scroll>
+            <span>Get Started</span>
+          </a>
         </li>
         <li>
           <a href="#home-support" uk-scroll>Support</a>
         </li>
         <li>
           <a class="login-link" href="<%= user_facebook_omniauth_authorize_path %>">
-            <span class="icon" uk-icon="icon: user; ratio: 0.75"></span>
-            Login
+            <span>Log In</span>
           </a>
         </li>
       </ul>
     </div>
-    <div class="heading">Welcome to Community Share</div>
-    <div class="subheading">Organize and Share Files in Your Community</div>
-  </div>
-
-  <div class="page-home-about" id="home-about">
-    <div class="page-home-heading">
-      <h2 class="uk-text-center uk-heading-line">
-        <span>About</span>
-      </h2>
+    <div class="heading">Organize and Share Files in Your Community</div>
+    <div class="subheading">Use Facebook to stay in sync. Fast. Simple. Secure.</div>
+    <div class="buttons">
+      <a class="register-link" href="#home-register" uk-scroll>Create Your Community</a>
+      <a class="demo-link" href="#home-demo" uk-scroll>Live Demo</a>
     </div>
-
-    <ul>
-      <li>Private</li>
-      <li>Fast</li>
-      <li>Secure</li>
-      <li>Simple</li>
-      <li>Facebook Integration</li>
-    </ul>
   </div>
 
   <div class="page-home-features" id="home-features">
@@ -180,9 +166,8 @@
       </h2>
     </div>
 
-    <div style="margin: 0px 0 15px 0;">Get a hands on feel for how Community Share works</div>
+    <div class="page-home-demo-intro">Get a hands on feel for how Community Share works</div>
     <div><%= link_to "Launch the Live Demo", user_facebook_omniauth_authorize_path, class: "demo-button" %></div>
-
   </div>
 
   <div class="page-home-register" id="home-register">
