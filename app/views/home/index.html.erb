@@ -18,10 +18,10 @@
           <a href="#home-pricing" uk-scroll>Pricing</a>
         </li>
         <li>
-          <a href="#home-register" uk-scroll>Get Started</a>
+          <a href="#home-demo" uk-scroll>Live Demo</a>
         </li>
         <li>
-          <a href="#home-demo" uk-scroll>Demo</a>
+          <a href="#home-register" uk-scroll>Get Started</a>
         </li>
         <li>
           <a href="#home-support" uk-scroll>Support</a>
@@ -171,6 +171,18 @@
     <div class="home-pricing-footer">
       Discounts available for non-profits, <a href="mailto:sales+nonprofit@community-share.com">contact us</a> for details
     </div>
+  </div>
+
+  <div class="page-home-demo" id="home-demo">
+    <div class="page-home-heading">
+      <h2 class="uk-text-center">
+        <span>Live Demo</span>
+      </h2>
+    </div>
+
+    <div style="margin: 0px 0 15px 0;">Get a hands on feel for how Community Share works</div>
+    <div><%= link_to "Launch the Live Demo", user_facebook_omniauth_authorize_path, class: "demo-button" %></div>
+
   </div>
 
   <div class="page-home-register" id="home-register">

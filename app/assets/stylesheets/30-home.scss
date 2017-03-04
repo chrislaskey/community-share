@@ -211,6 +211,35 @@
     }
   }
 
+  .page-home-demo {
+    background-color: #4d388c;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 60px 30px 60px 30px;
+    text-align: center;
+
+    .page-home-heading {
+      h2 {
+        color: rgba(255, 255, 255, 0.95);
+      }
+    }
+
+    a {
+      background: #1e87f0;
+      color: #fff;
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 15px 45px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+
+      &:hover {
+        background: #168ef5;
+        text-decoration: none;
+      }
+    }
+  }
+
   .page-home-register {
     background-color: #fff;
     border-top: 1px solid #eee;
