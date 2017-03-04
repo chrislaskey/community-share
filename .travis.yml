@@ -6,7 +6,7 @@ services:
 before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c "create database community_share_test;" -U postgres
-  - bundle exec rake db:schema:load db:setup
+  - bundle exec rake db:setup
 bundler_args: --without production
 script:
  - bundle exec rspec

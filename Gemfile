@@ -30,6 +30,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "rspec-support"
   gem "shoulda-matchers", "~> 3.1"
+  gem "database_cleaner"
 end
 
 group :development do
