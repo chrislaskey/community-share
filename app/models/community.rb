@@ -15,6 +15,8 @@ class Community < ApplicationRecord
     find_by(slug: "demo")
   }
 
+  after_initialize :set_slug
+
   def subscription
     subscriptions.detect(&:active)
   end
@@ -46,6 +48,12 @@ class Community < ApplicationRecord
 
   def over_limit?(key)
     send(key) >= level.limit(key)
+  end
+
+  private
+
+  def set_slug
+    self.slug ||= (name || "").parameterize
   end
 
 end

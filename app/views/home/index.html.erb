@@ -18,6 +18,12 @@
           <a href="#home-pricing" uk-scroll>Pricing</a>
         </li>
         <li>
+          <a href="#home-register" uk-scroll>Get Started</a>
+        </li>
+        <li>
+          <a href="#home-demo" uk-scroll>Demo</a>
+        </li>
+        <li>
           <a href="#home-support" uk-scroll>Support</a>
         </li>
         <li>
@@ -124,7 +130,7 @@
         <div class="price">$0</div>
         <div class="price-term">Per Month</div>
         <div class="action">
-          <a href="#">Get Started</a>
+          <a href="?community-level=1#home-register">Get Started</a>
         </div>
         <div class="features">Up to 5 Users</div>
         <div class="features">Up to 30 Files / 100 MB</div>
@@ -135,7 +141,7 @@
         <div class="price">$15</div>
         <div class="price-term">Per Month</div>
         <div class="action">
-          <a href="#">Get Started</a>
+          <a href="?community-level=2#home-register">Get Started</a>
         </div>
         <div class="features">Up to 100 Users</div>
         <div class="features">Up to 300 Files / 3 GB</div>
@@ -150,7 +156,7 @@
         <div class="price">$35</div>
         <div class="price-term">Per Month</div>
         <div class="action">
-          <a href="#">Get Started</a>
+          <a href="?community-level=3#home-register">Get Started</a>
         </div>
         <div class="features"><strong>Unlimited</strong> Users</div>
         <div class="features"><strong>Unlimited</strong> Files / 20 GB</div>
@@ -165,6 +171,43 @@
     <div class="home-pricing-footer">
       Discounts available for non-profits, <a href="mailto:sales+nonprofit@community-share.com">contact us</a> for details
     </div>
+  </div>
+
+  <div class="page-home-register" id="home-register">
+    <div class="page-home-heading">
+      <h2 class="uk-text-center uk-heading-line">
+        <span>Get Started</span>
+      </h2>
+    </div>
+    <div class="page-home-register-directions">To create your own community fill out the fields below. It's that easy!</div>
+    <%= render "layouts/alerts" %>
+    <%= form_tag "#{community_registrations_path}#home-register" do %>
+      <div class="page-home-register-form-inner">
+        <div class="page-home-register-row-container">
+          <div class="page-home-register-row">
+            <div class="community-name">
+              <%= text_field_tag :community_name, @registration.community_name, class: "uk-input", placeholder: "Community Name" %>
+            </div>
+            <div class="community-level">
+              <% levels = [["Community Type", false], ["", ""], ["Starter", 1], ["Community", 2], ["Premium", 3]] %>
+              <%= select_tag(
+                    :community_level,
+                    options_for_select(levels, @registration.community_level || params["community-level"]),
+                    { class: "uk-select" }
+                  )
+              %>
+            </div>
+            <div class="submit">
+              <%= submit_tag "Register", class: "uk-button uk-button-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="terms-agreement">
+        <%= check_box_tag :terms_agreement, true, @registration.terms_agreement %>
+        <label for="terms_agreement">Agree to <%= link_to "Terms and Conditions", "/terms-and-conditions", target: :blank %></label>
+      </div>
+    <% end %>
   </div>
 
   <div class="page-home-footer">

@@ -211,6 +211,79 @@
     }
   }
 
+  .page-home-register {
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    padding: 60px 30px;
+
+    .page-home-register-directions {
+      // display: none;
+      margin: -15px 0 45px 0;
+      text-align: center;
+    }
+
+    .page-home-register-form-inner {
+      // margin-top: -45px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page-home-register-row-container {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page-home-register-row {
+      align-items: center;
+      background: #f6f6f6;
+      display: flex;
+      justify-content: center;
+      padding: 30px 45px;
+      width: 100%;
+    }
+
+    .community-name {
+      width: 400px;
+    }
+
+    .community-level {
+      margin: 0 2%;
+      width: 200px;
+    }
+
+    .submit input {
+      background: #9d1e9e;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+
+      &:hover {
+        background: #8f2690;
+      }
+    }
+
+    .terms-agreement {
+      font-size: 0.875rem;
+      margin: 15px 0 0 0;
+      text-align: center;
+
+      a {
+        border-bottom: 1px solid #ccc;
+        color: #333;
+
+        &:hover {
+          border-bottom: none;
+          color: #9d1e9e;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
   .page-home-footer {
     color: rgba(255, 255, 255, 0.9);
 

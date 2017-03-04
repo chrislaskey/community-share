@@ -26,5 +26,7 @@ Rails.application.routes.draw do
 
   get :login, to: "login#index"
 
+  match :register, to: "home#register", via: [:get, :post], as: "community-registrations"
+
   root to: "home#index"
 end
