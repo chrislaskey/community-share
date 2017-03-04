@@ -24,6 +24,7 @@ The application uses:
 - [Devise](https://github.com/plataformatec/devise)
 - [Omniauth](https://github.com/omniauth/omniauth)
 - [Omniauth Facebook](https://github.com/mkdynamic/omniauth-facebook)
+- [UIkit](https://getuikit.com/)
 
 The test suite uses:
 
