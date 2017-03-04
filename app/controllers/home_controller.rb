@@ -13,6 +13,8 @@ class HomeController < ApplicationController
       flash[:error] = @registration.errors
       return render "index"
     end
+
+    render "index"
   end
 
   private

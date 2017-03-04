@@ -1,6 +1,6 @@
 class CommunityRegistration
   include ActiveModel::Model
-  
+
   attr_accessor :community_name, :community_level, :errors, :terms_agreement
 
   def errors
