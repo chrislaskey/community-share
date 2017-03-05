@@ -1,10 +1,9 @@
 module Memberships
-
   def update_memberships(user = nil)
     set_membership_user(user)
     destroy_demo_membership unless @membership_user.memberships.empty?
     create_demo_membership if @membership_user.memberships.empty?
-    set_current_membership 
+    set_current_membership
   end
 
   def clear_current_membership(user = nil)
@@ -45,5 +44,4 @@ module Memberships
         .update_attributes(current: true)
     end
   end
-
 end

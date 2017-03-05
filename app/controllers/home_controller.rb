@@ -64,7 +64,7 @@ class HomeController < ApplicationController
     community = Community.create(
       name: registration_params[:community_name]
     )
-    
+
     community_level = CommunityLevel.find_by(
       slug: registration_params[:community_level]
     )
