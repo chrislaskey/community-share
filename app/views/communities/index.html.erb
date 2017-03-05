@@ -2,8 +2,10 @@
   <div class="page-login-inner">
     <h1><strong>Community</strong>Share</h1>
     <h3>Switch Communities</h3>
-    <% @communities.map do |community| %>
-      <%= link_to community.name, login_community_path(community), class: "login-link" %>
-    <% end %>
+    <div class="login-links">
+      <% @communities.map do |community| %>
+        <%= link_to community.name, login_community_path(community), class: "login-link" %>
+      <% end %>
+    </div>
   </div>
 </div>

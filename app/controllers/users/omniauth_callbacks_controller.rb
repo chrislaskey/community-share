@@ -1,15 +1,18 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
+  include Memberships
+
   def facebook
     find_user
     update_user
-    update_memberships
+    update_memberships(@user)
     flash.discard
 
     session["devise.facebook_data"] = user_data
 
     if @user.persisted?
-      sign_in_and_redirect @user, event: :authentication
+      sign_in @user, event: :authentication
+      redirect_to request.env["omniauth.origin"] || "/documents"
     else
       flash[:error] = "An error occured while trying to log in with Facebook"
       redirect_to root_path
@@ -41,35 +44,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       token: user_data.credentials.token,
       uid: user_data.uid
     )
-  end
-
-  def destroy_demo_membership
-    demo_membership = Membership.find_by(
-      community: Community.demo,
-      user: @user
-    )
-
-    demo_membership.destroy if demo_membership.present?
-  end
-
-  def create_demo_membership
-    Membership.create(
-      community: Community.demo,
-      user: @user,
-      role: Membership::ROLES.first
-    )
-  end
-
-  def set_current_membership
-    unless @user.memberships.detect(&:current)
-      @user.memberships.first.update_attributes(current: true)
-    end
-  end
-
-  def update_memberships
-    destroy_demo_membership unless @user.memberships.empty?
-    create_demo_membership if @user.memberships.empty?
-    set_current_membership
   end
 
 end

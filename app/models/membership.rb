@@ -2,6 +2,7 @@ class Membership < ApplicationRecord
 
   ROLES = %w(admin editor contributor member suspended)
   DEFAULT_ROLE = "member"
+  ADMIN_ROLE = "admin"
 
   belongs_to :community
   belongs_to :user
