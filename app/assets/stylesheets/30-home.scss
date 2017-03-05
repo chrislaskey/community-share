@@ -87,7 +87,7 @@
       justify-content: center;
 
       .register-link {
-        background: #fff;
+        background: rgba(255, 255, 255, 0.9);
         color: #ab0ab3;
         display: inline-block;
         font-size: 0.75rem;
@@ -262,6 +262,8 @@
 
   .page-home-demo {
     background-color: #4d388c;
+    background-image: -webkit-linear-gradient(0deg, #64388c 0%, rgba(0, 0, 0, 0) 100%);
+    background-image: linear-gradient(0deg, #64388c 0%, rgba(0, 0, 0, 0) 100%);
     color: rgba(255, 255, 255, 0.9);
     padding: 60px 30px 60px 30px;
     text-align: center;
