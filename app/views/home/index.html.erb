@@ -9,18 +9,18 @@
           <a href="#home-features" uk-scroll>Features</a>
         </li>
         <li>
-          <a href="#home-faq" uk-scroll>FAQ</a>
+          <a href="#home-demo" uk-scroll>Live Demo</a>
         </li>
         <li>
           <a href="#home-pricing" uk-scroll>Pricing</a>
         </li>
         <li>
-          <a href="#home-demo" uk-scroll>Live Demo</a>
-        </li>
-        <li>
           <a class="active" href="#home-register" uk-scroll>
             <span>Get Started</span>
           </a>
+        </li>
+        <li>
+          <a href="#home-faq" uk-scroll>FAQ</a>
         </li>
         <li>
           <a href="#home-support" uk-scroll>Support</a>
@@ -93,15 +93,15 @@
     </div>
   </div>
 
-  <div class="page-home-faq" id="home-faq">
+  <div class="page-home-demo" id="home-demo">
     <div class="page-home-heading">
       <h2 class="uk-text-center">
-        <span>Frequently Asked Questions</span>
+        <span>Live Demo</span>
       </h2>
     </div>
 
-    <div><strong>Do I need a Facebook Login?</strong></div>
-    <div>Yes! Facebook is a leader in building strong communities. Using Facebook logins guarantees a safe and secure place to share within your community.</div>
+    <div class="page-home-demo-intro">Get a hands on feel for how Community Share works</div>
+    <div><%= link_to "Launch the Live Demo", user_facebook_omniauth_authorize_path, class: "demo-button" %></div>
   </div>
 
   <div class="page-home-pricing" id="home-pricing">
@@ -159,17 +159,6 @@
     </div>
   </div>
 
-  <div class="page-home-demo" id="home-demo">
-    <div class="page-home-heading">
-      <h2 class="uk-text-center">
-        <span>Live Demo</span>
-      </h2>
-    </div>
-
-    <div class="page-home-demo-intro">Get a hands on feel for how Community Share works</div>
-    <div><%= link_to "Launch the Live Demo", user_facebook_omniauth_authorize_path, class: "demo-button" %></div>
-  </div>
-
   <div class="page-home-register" id="home-register">
     <div class="page-home-heading">
       <h2 class="uk-text-center uk-heading-line">
@@ -225,6 +214,17 @@
         <label for="terms_agreement">Agree to <%= link_to "Terms and Conditions", "/terms-and-conditions", target: :blank %></label>
       </div>
     <% end %>
+  </div>
+
+  <div class="page-home-faq" id="home-faq">
+    <div class="page-home-heading">
+      <h2 class="uk-text-center">
+        <span>Frequently Asked Questions</span>
+      </h2>
+    </div>
+
+    <div><strong>Do I need a Facebook Login?</strong></div>
+    <div>Yes! Facebook is a leader in building strong communities. Using Facebook logins guarantees a safe and secure place to share within your community.</div>
   </div>
 
   <div class="page-home-support" id="home-support">
