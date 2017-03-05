@@ -87,8 +87,8 @@
       justify-content: center;
 
       .register-link {
-        background: #1e87f0;
-        color: #fff;
+        background: #fff;
+        color: #ab0ab3;
         display: inline-block;
         font-size: 0.75rem;
         font-weight: 800;
@@ -97,8 +97,8 @@
         text-transform: uppercase;
 
         &:hover {
-          background: #fff;
-          color: #ab0ab3;
+          background: #1e87f0;
+          color: #fff;
           text-decoration: none;
         }
       }
@@ -115,9 +115,9 @@
         text-transform: uppercase;
 
         &:hover {
-          background: #fff;
-          border: 1px solid #fff;
-          color: #ab0ab3;
+          background: #1e87f0;
+          border: 1px solid #1e87f0;
+          color: #fff;
           text-decoration: none;
         }
 
@@ -299,13 +299,11 @@
     padding: 60px 30px;
 
     .page-home-register-directions {
-      // display: none;
       margin: -15px 0 45px 0;
       text-align: center;
     }
 
     .page-home-register-form-inner {
-      // margin-top: -45px;
       align-items: center;
       display: flex;
       justify-content: center;
@@ -366,23 +364,40 @@
     }
   }
 
-  .page-home-footer {
+  .page-home-support {
+    background: #222;
     color: rgba(255, 255, 255, 0.9);
+    padding: 60px 30px;
+    text-align: center;
 
-    .page-home-footer-top {
-      background: #222;
-      padding: 60px 30px;
+    .page-home-heading {
+      h2 {
+        color: rgba(255, 255, 255, 0.95);
+      }
     }
 
-    .page-home-footer-bottom {
-      background: #181818;
-      padding: 30px 30px;
-      text-align: center;
+    a {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.9);
 
-      a {
-        color: rgba(255, 255, 255, 0.9);
-        font-weight: 700;
+      &:hover {
+        border-bottom: none;
+        color: #1e87f0;
+        text-decoration: none;
       }
+    }
+  }
+
+  .page-home-footer {
+    background: #181818;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    padding: 30px 30px;
+    text-align: center;
+
+    a {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 700;
     }
   }
 }
