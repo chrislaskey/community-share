@@ -1,14 +1,14 @@
 <% tags ||= @tags %>
 
-<% if tags.present? %>
-  <div class="page-sidebar sidebar-tags">
+<div class="page-sidebar sidebar-tags">
+  <% if tags.present? %>
     <% tags.group_by(&:category).sort.map do |category, items| %>
       <h4><%= category %></h4>
       <% if items.present? %>
         <ul class="uk-list">
           <% items.sort_by(&:name).map do |tag| %>
             <li>
-              <a href="<%= document_tag_path(tag) %>">
+              <a class="sidebar-tag" href="<%= document_tag_path(tag) %>">
                 <span><%= tag.name %></span>
                 <%# <span class="uk-badge"><%= tag.size %1></span> %>
                 <span class="size"><%= tag.size %></span>
@@ -18,5 +18,10 @@
         </ul>
       <% end %>
     <% end %>
-  </div>
-<% end %>
+  <% else %>
+    <div class="uk-placeholder uk-text-center">
+      <span uk-icon="icon: tag"></span>
+      <span class="uk-text-middle"><%= link_to "Add a new tag", new_tag_path %></span>
+    </div>
+  <% end %>
+</div>
