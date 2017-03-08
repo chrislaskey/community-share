@@ -52,5 +52,9 @@
 
       <%= render "downloads/downloads", downloads: @document.downloads.paginate(page: params[:page]), show_document: false %>
     <% end %>
+
+    <p><strong>Comments</strong></p>
+
+    <div class="fb-comments" data-href="<%= request.original_url %>" data-width="100%" data-numposts="5"></div>
   </div>
 </div>
