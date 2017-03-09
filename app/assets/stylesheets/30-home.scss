@@ -15,8 +15,8 @@
 
   .page-home-header {
     background-color: #702071;
-    background-image: -webkit-radial-gradient(50% 50%, circle, rgba(182, 84, 161, 0.5) 0%, rgba(162,84,182,0) 75%);
-    background-image: radial-gradient(50% 50%, circle, rgba(182, 84, 161, 0.5) 0%, rgba(162,84,182,0) 75%);
+    background-image: -webkit-radial-gradient(50% bottom, circle, rgba(182, 84, 161, 0.5) 0%, rgba(162,84,182,0) 75%);
+    background-image: radial-gradient(50% bottom, circle, rgba(182, 84, 161, 0.5) 0%, rgba(162,84,182,0) 75%);
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
     color: #fff;
     height: 540px;
