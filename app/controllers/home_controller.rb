@@ -19,6 +19,8 @@ class HomeController < ApplicationController
       return redirect_to "#{user_facebook_omniauth_authorize_path}?origin=/register"
     end
 
+    return render "index" unless validate_admin_membership_count
+
     create_community
     create_admin_membership
     clear_current_membership
@@ -58,6 +60,15 @@ class HomeController < ApplicationController
 
   def clear_params_cookie
     cookies.delete :registration_params
+  end
+
+  def validate_admin_membership_count
+    if Membership.admin_memberships(current_user).count > Membership::ADMIN_ROLE_LIMIT
+      @registration.errors << "Can not be an admin of more than #{Membership::ADMIN_ROLE_LIMIT} communities"
+      return false
+    end
+
+    true
   end
 
   def create_community

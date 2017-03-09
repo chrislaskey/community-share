@@ -3,6 +3,7 @@ class Membership < ApplicationRecord
   ROLES = %w(admin editor contributor member suspended)
   DEFAULT_ROLE = "member"
   ADMIN_ROLE = "admin"
+  ADMIN_ROLE_LIMIT = 30
 
   belongs_to :community
   belongs_to :user
@@ -13,6 +14,10 @@ class Membership < ApplicationRecord
 
   after_initialize :set_role
   after_initialize :set_user
+
+  scope :admin_memberships, ->(user) {
+    where(user: user, role: Membership::ADMIN_ROLE)
+  }
 
   def active
     role != "suspended"
