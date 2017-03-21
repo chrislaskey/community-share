@@ -14,12 +14,17 @@
   }
 
   .page-home-header {
-    background-color: #702071;
-    background-image: -webkit-radial-gradient(50% bottom, circle, rgba(182, 84, 161, 0.5) 0%, rgba(162,84,182,0) 75%);
-    background-image: radial-gradient(50% bottom, circle, rgba(182, 84, 161, 0.5) 0%, rgba(162,84,182,0) 75%);
+    background-image: url("/assets/images/banner.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
     color: #fff;
-    height: 540px;
+    height: 580px;
+
+    .page-home-header-overlay {
+      height: 100%;
+    }
 
     .page-home-titlebar {
       display: flex;
@@ -66,61 +71,63 @@
       }
     }
 
-    .heading {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 2rem;
-      font-weight: 800;
-      padding-top: 130px;
-      text-align: center;
-    }
+    .page-home-banner {
+      margin: 140px 0px 0px 60px;
 
-    .subheading {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 1.25rem;
-      text-align: center;
-    }
-
-    .buttons {
-      align-items: center;
-      display: flex;
-      margin: 30px 0 0 0;
-      justify-content: center;
-
-      .register-link {
-        background: rgba(255, 255, 255, 0.9);
-        color: #ab0ab3;
-        display: inline-block;
-        font-size: 0.75rem;
+      .heading {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 2rem;
         font-weight: 800;
-        padding: 16px 30px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-
-        &:hover {
-          background: #1e87f0;
-          color: #fff;
-          text-decoration: none;
-        }
       }
 
-      .demo-link {
-        border: 1px solid rgba(255, 255, 255, 0.8);
-        color: #fff;
-        display: inline-block;
-        font-size: 0.75rem;
-        font-weight: 500;
-        padding: 15px 30px;
-        letter-spacing: 1px;
-        margin-left: 15px;
-        text-transform: uppercase;
+      .subheading {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 1.25rem;
+      }
 
-        &:hover {
-          background: #1e87f0;
-          border: 1px solid #1e87f0;
-          color: #fff;
-          text-decoration: none;
+      .buttons {
+        align-items: center;
+        display: flex;
+        margin: 30px 0 0 0;
+
+        .register-link {
+          background: #fff;
+          border-radius: 30px;
+          color: #ab0ab3;
+          display: inline-block;
+          font-size: 0.75rem;
+          font-weight: 800;
+          padding: 16px 30px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+
+          &:hover {
+            background: #1e87f0;
+            color: #fff;
+            text-decoration: none;
+          }
         }
 
+        .demo-link {
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          border-radius: 30px;
+          color: #fff;
+          display: inline-block;
+          font-size: 0.75rem;
+          font-weight: 500;
+          padding: 15px 30px;
+          letter-spacing: 1px;
+          margin-left: 15px;
+          text-transform: uppercase;
+
+          &:hover {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            color: #fff;
+            text-decoration: none;
+          }
+        }
       }
     }
   }
