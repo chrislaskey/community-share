@@ -22,11 +22,16 @@
 
 <div class="page-main">
   <div class="page-content">
-    <p><strong>Name</strong></p>
-    <%= @document.name %>
+    <h2><%= @document.name %></h2>
+    <p><%= @document.description %></p>
 
-    <p><strong>Description</strong></p>
-    <%= @document.description %>
+    <div class="uk-placeholder uk-text-center">
+      <span uk-icon="icon: cloud-download"></span>
+      Download
+      <a class="sfile-download" href="<%= download_document_path(@document) %>" target="_blank">
+        <%= "#{@document.file_file_name} (#{number_to_human_size(@document.file_file_size)})" %>
+      </a>
+    </div>
 
     <% if @document.tags.present? %>
       <p>
@@ -40,21 +45,13 @@
       </p>
     <% end %>
 
-    <p><strong>File</strong></p>
-
-    <p><%= link_to @document.file_file_name, download_document_path(@document) %></p>
-
-    <p><strong>File Size</strong></p>
-    <%= @document.file_file_size %>
-
     <% if role?(:admin) && @document.downloads.present? %>
-      <h3>Document Downloads</h3>
+      <h4>Document Downloads</h4>
 
       <%= render "downloads/downloads", downloads: @document.downloads.paginate(page: params[:page]), show_document: false %>
     <% end %>
 
-    <p><strong>Comments</strong></p>
-
+    <h4>Comments</h3>
     <div class="fb-like" data-href="<%= request.original_url %>" data-layout="standard" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
     <div class="fb-comments" data-href="<%= request.original_url %>" data-width="100%" data-numposts="5"></div>
   </div>
