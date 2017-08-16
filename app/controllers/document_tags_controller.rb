@@ -6,7 +6,7 @@ class DocumentTagsController < ApplicationController
 
   def show
     @tag = Tag.in_community(current_community).find(params[:id])
-    @documents = @tag.documents.paginate(page: params[:page])
+    @documents = @tag.documents.paginate(page: params[:page]).order(:name)
   end
 
 end
