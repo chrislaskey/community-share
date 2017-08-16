@@ -1,6 +1,6 @@
 <% if document.tags.present? %>
   <div class="document-tags">
-    <% document.tags.group_by(&:category).map do |category, items| %>
+    <% document.tags.group_by(&:category).sort_by{|category| category}.map do |category, items| %>
       <span class="tag-category">
         <strong><%= category %>: </strong>
         <% items.map do |tag| %>
