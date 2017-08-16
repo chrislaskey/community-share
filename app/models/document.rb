@@ -28,6 +28,10 @@ class Document < ApplicationRecord
 
   before_validation :create_slug
 
+  scope :search, ->(search) do
+    where("name ILIKE ? OR description ILIKE ?", "%#{search}%", "%#{search}%") if search.present?
+  end
+
   def created_by?(current_user)
     user == current_user
   end

@@ -1,0 +1,7 @@
+<%= form_tag(documents_path, method: :get, class: "document-search") do %>
+
+  <%= text_field_tag :search, @search, placeholder: "Search Documents", class: "uk-input" %>
+
+  <%= submit_tag "Search", class: "uk-button uk-button-default" %>
+
+<% end %>

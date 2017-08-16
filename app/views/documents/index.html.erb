@@ -16,6 +16,7 @@
 
 <div class="page-main">
   <div class="page-content">
+    <%= render "documents/search" %>
     <%= render "documents/documents" %>
     <%= render "documents/documents_404" if @documents.empty? %>
   </div>

@@ -7,7 +7,9 @@ class DocumentsController < ApplicationController
   before_action :find_tags, except: [:show, :destroy]
 
   def index
+    @search = params[:search]
     @documents = Document
+      .search(@search)
       .in_community(current_community)
       .paginate(page: params[:page])
       .order(:name)
