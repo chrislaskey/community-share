@@ -15,7 +15,7 @@ RSpec.describe Tag, type: :model do
     it { is_expected.to validate_presence_of(:community) }
 
     describe "name" do
-      let(:other_tag) { build(:tag, name: tag.name, category: tag.category) }
+      let(:other_tag) { build(:tag, name: tag.name, category: tag.category, community: tag.community) }
 
       it "cannot have the same name within the same category" do
         expect(other_tag).not_to be_valid
@@ -23,7 +23,7 @@ RSpec.describe Tag, type: :model do
     end
 
     describe "slug" do
-      let(:other_tag) { build(:tag, slug: tag.slug, category: tag.category) }
+      let(:other_tag) { build(:tag, slug: tag.slug, category: tag.category, community: tag.community) }
 
       it "cannot have the same slug within the same category" do
         expect(other_tag).not_to be_valid
