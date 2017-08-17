@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   end
 
   resources :documents do
+    collection do
+      resources :document_search, path: "search", only: [:index]
+    end
     member do
       get :download
     end
