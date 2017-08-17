@@ -23,6 +23,9 @@
             </a>
             <div uk-dropdown>
               <ul class="uk-nav uk-nav-default">
+                <li class="uk-nav-header">Account</li>
+                <li><%= current_user.name %></li>
+                <li><%= current_user.email %></li>
                 <li class="uk-nav-header">Actions</li>
                 <% if current_user.communities.length > 1 %>
                 <li><%= link_to "Switch Community", communities_path %></li>
