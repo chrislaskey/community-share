@@ -1,0 +1,27 @@
+<%= form_for @bulk_membership, url: memberships_bulk_index_path do |form| %>
+
+  <p>To use the bulk membership tool:</p>
+
+  <ol>
+    <li>Select a Role to apply to all the users. The default role is <code>Member</code>.</li>
+    <li>Input users, one per line. Users can either be in the format <code>John Smith &lt;user@example.com&gt;</code> (name and email) or <code>user@example.com</code> (email only).</li>
+  </ol>
+
+  <p>For safety, if any errors are encountered while processing the list none of the memberships will be created.</p>
+
+  <p>
+    <%= form.label :role %><br>
+    <% roles = Membership::ROLES.map{ |item| [item.titleize, item] } %>
+    <%= form.select :role, options_for_select(roles, :member), {}, class: "uk-select" %>
+  </p>
+
+  <p>
+    <%= form.label :data, "Emails" %><br>
+    <%= form.text_area :data, {rows: 12, class: "uk-textarea"} %>
+  </p>
+
+  <p>
+    <%= form.submit "Submit", class: "uk-button uk-button-default" %>
+  </p>
+
+<% end %>

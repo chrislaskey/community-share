@@ -21,7 +21,13 @@ Rails.application.routes.draw do
 
   resources :document_tags, path: "document-tags", only: [:show]
   resources :downloads
-  resources :memberships
+
+  resources :memberships do
+    collection do
+      resources :memberships_bulk, path: "bulk", only: [:new, :create]
+    end
+  end
+
   resources :tags
 
   get :login, to: "login#index"

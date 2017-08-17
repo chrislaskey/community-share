@@ -46,8 +46,8 @@ class Community < ApplicationRecord
     memberships.select(&:active).length
   end
 
-  def over_limit?(key)
-    send(key) >= level.limit(key)
+  def over_limit?(key, extra = 0)
+    send(key) + extra.to_i >= level.limit(key)
   end
 
   private
