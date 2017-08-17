@@ -57,13 +57,6 @@ a,
       font-size: 1.25rem;
       font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     }
-
-    .community-name {
-      color: #888;
-      font-size: 1rem;
-      font-style: italic;
-      margin-left: 10px;
-    }
   }
 
   .page-navbar {
@@ -113,6 +106,10 @@ a,
       color: #fff;
       font-size: 2.25rem;
       margin-bottom: 0;
+
+      small {
+        opacity: 0.6;
+      }
     }
   }
 
