@@ -23,7 +23,7 @@ The application uses:
 - [Paperclip](https://github.com/thoughtbot/paperclip)
 - [Devise](https://github.com/plataformatec/devise)
 - [Omniauth](https://github.com/omniauth/omniauth)
-- [Omniauth Facebook](https://github.com/mkdynamic/omniauth-facebook)
+- [Omniauth LinkedIn](https://github.com/decioferreira/omniauth-linkedin-oauth2)
 - [UIkit](https://getuikit.com/)
 
 The test suite uses:
@@ -37,7 +37,7 @@ The test suite uses:
 
 - Amazon EC2 for compute
 - Amazon S3 for file storage
-- Facebook for user authentication
+- LinkedIn for user authentication
 - Ansible for server configuration and code deployment
 
 See the [Community Share Ansible repository](https://github.com/chrislaskey/community-share-ansible) for more details.

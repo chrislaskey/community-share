@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :user do
-    provider "facebook"
+    provider "linkedin"
     uid { SecureRandom::uuid }
     remember_created_at { Time.now }
     sign_in_count { SecureRandom::rand(0..100) }

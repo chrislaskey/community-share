@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   include ActionView::Helpers::DateHelper
 
-  devise :rememberable, :timeoutable, :trackable, :omniauthable, omniauth_providers: [:facebook]
+  devise :rememberable, :timeoutable, :trackable, :omniauthable, omniauth_providers: [:linkedin]
 
   validates :email, uniqueness: true
 

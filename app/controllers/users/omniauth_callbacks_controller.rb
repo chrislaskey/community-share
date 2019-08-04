@@ -2,19 +2,19 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   include Memberships
 
-  def facebook
+  def linkedin
     find_user
     update_user
     update_memberships(@user)
     flash.discard
 
-    session["devise.facebook_data"] = user_data
+    session["devise.linkedin_data"] = user_data
 
     if @user.persisted?
       sign_in @user, event: :authentication
       redirect_to request.env["omniauth.origin"] || "/documents"
     else
-      flash[:error] = "An error occured while trying to log in with Facebook"
+      flash[:error] = "An error occured while trying to log in with LinkedIn"
       redirect_to root_path
     end
   end

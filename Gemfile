@@ -12,7 +12,7 @@ gem "sass-rails", "~> 5.0"
 gem "uglifier", ">= 1.3.0"
 gem "jquery-rails"
 gem "devise"
-gem "omniauth-facebook"
+gem 'omniauth-linkedin-oauth2'
 gem "paperclip", "~> 5.0.0"
 gem "aws-sdk", "~> 2.0"
 gem "will_paginate", "~> 3.1.0"

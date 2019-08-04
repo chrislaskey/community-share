@@ -16,7 +16,7 @@ class HomeController < ApplicationController
 
     unless current_user
       store_params_in_cookie
-      return redirect_to "#{user_facebook_omniauth_authorize_path}?origin=/register"
+      return redirect_to "#{user_linkedin_omniauth_authorize_path}?origin=/register"
     end
 
     return render "index" unless validate_admin_membership_count
