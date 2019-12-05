@@ -23,7 +23,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "faker"
   gem "pry-rails"
-  gem "puma", "~> 3.0"
+  gem "puma", "~> 3.12"
   gem "rspec-core"
   gem "rspec-expectations"
   gem "rspec-mocks"
