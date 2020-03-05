@@ -51,7 +51,7 @@ GEM
     bcrypt (3.1.13)
     builder (3.2.4)
     byebug (9.0.6)
-    climate_control (0.1.0)
+    climate_control (0.2.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.1)
@@ -103,10 +103,10 @@ GEM
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
-    mime-types (3.1)
+    mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0521)
-    mimemagic (0.3.2)
+    mime-types-data (3.2019.1009)
+    mimemagic (0.3.4)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
     multi_json (1.13.1)
@@ -130,7 +130,7 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
     orm_adapter (0.5.0)
-    paperclip (5.0.0)
+    paperclip (5.2.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
@@ -266,7 +266,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   omniauth-linkedin-oauth2
-  paperclip (~> 5.0.0)
+  paperclip (~> 5.2.0)
   pg
   pry-rails
   puma (~> 3.12)
