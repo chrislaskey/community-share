@@ -10,9 +10,9 @@ It includes tiered pricing and feature sets. And administrative tools for commun
 
 For more information on the application and its features visit the Community Share website at [community-share.com](https://community-share.com).
 
-### Demo
+### Screenshots
 
-A [live demo](https://community-share.com#demo) is available. Or get more hands-on and [signing up](https://community-share.com#sign-up) for the free pricing tier.
+![Community Share Homepage](doc/community-share-homepage.png "Community Share homepage")
 
 ## Technical Background
 
